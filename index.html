@@ -167,6 +167,16 @@ input:focus,textarea:focus{border-color:var(--yellow)}
 .dword{background:var(--yellow);color:#1a1033;border-radius:14px;padding:10px 14px;text-align:center;font-size:20px}
 .dword b{font-family:"Baloo 2";font-size:28px}
 textarea{resize:none}
+.setupwrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;width:100%;max-width:1320px;align-items:start;text-align:left}
+.setupwrap .setup{max-width:none}
+.rules h3{font-size:28px;margin:4px 0 8px}
+.rules ol,.rules ul{font-size:21px;line-height:1.45;padding-left:28px;margin:0 0 18px}
+.rules li{margin-bottom:8px}
+.rules ul.score li{color:var(--yellow);font-weight:600}
+.rules-phone{text-align:left}
+.rules-phone h3{font-size:22px}
+.rules-phone ol,.rules-phone ul{font-size:16px;padding-left:22px;margin-bottom:12px}
+@media (max-width:1100px){.setupwrap{grid-template-columns:1fr}}
 @media (max-width:900px){.host{grid-template-columns:1fr}:root{--art:min(calc(100vh - 160px),calc(100vw - 44px))}.big-q{font-size:32px}.choices{grid-template-columns:1fr 1fr}}
 </style>
 </head>
@@ -506,6 +516,7 @@ function isGuess(g){ return g && (g.type==="sketch"||g.type==="pixel"); }
 function publicState(){
   const g=S.game, out={title:S.title, phase:S.phase, players:playersArr().map(p=>({id:p.id,name:p.name,emoji:p.emoji,score:p.score||0}))};
   if(S.phase==="gameover"&&S.lastGained) out.gained=S.lastGained;
+  if(S.phase==="setup") out.setup=S.setupType;
   if(g){
     out.g={type:g.type, rid:g.rid, step:g.step, idx:g.idx, total:g.total, mult:g.mult, left:g.deadline?Math.max(0,Math.round((g.deadline-Date.now())/1000)):null, priv:{}};
     const ids=activeIds();
@@ -847,7 +858,7 @@ function hostSetup(){
       <div class="row wrap"><label class="uplbtn">🎂 Add Team Bake<input type="file" accept="image/*" multiple style="display:none" onchange="addPhotos(this.files,'bake')"></label><label class="uplbtn">🥗 Add Team Healthy<input type="file" accept="image/*" multiple style="display:none" onchange="addPhotos(this.files,'healthy')"></label></div></div>
       ${customFoods.length?`<div class="uploads">${customFoods.map((f,i)=>`<span>${f.team==="bake"?"🎂":"🥗"} ${esc(f.a[0])} <a href="#" onclick="customFoods.splice(${i},1);renderHost(true);return false" style="color:var(--pink)">✕</a></span>`).join("")}</div>`:""}`;
   }
-  return `<div class="card setup">
+  return `<div class="setupwrap">${rulesHtml(t)}<div class="card setup">
     <div class="row"><div style="font-size:54px">${d.ic}</div><div><h2 style="font-size:40px">${d.name}</h2><div class="muted">${d.desc}</div></div></div>
     ${d.diff?`<div class="setrow"><div class="lbl">Difficulty<small>${esc(DIFF_TXT[t][c.diff])}</small></div>${seg("diff",[["easy","😊 Easy"],["medium","😅 Medium"],["hard","😈 Hard"]])}</div>`:""}
     ${d.mode?`<div class="setrow"><div class="lbl">How to answer<small>${c.mode==="pick"?"Phones show 4 options, one try only. Great for people who hate typing.":"Type guesses, unlimited tries, with Skribbl-style letter hints."}</small></div>${seg("mode",[["type","⌨️ Type it"],["pick","🔢 Pick from 4"]])}</div>`:""}
@@ -858,7 +869,7 @@ function hostSetup(){
     ${d.noScore?"":`<div class="setrow"><div class="lbl">Final round double points<small>Keeps everyone in the race till the end</small></div><div class="seg"><button class="${S.settings.global.double?"on":""}" onclick="toggleDouble()">On</button><button class="${S.settings.global.double?"":"on"}" onclick="toggleDouble()">Off</button></div></div>`}
     ${d.minPlayers?`<div class="muted">Needs at least ${d.minPlayers} players. ${activeIds().length} joined.</div>`:""}
     <div class="row" style="justify-content:space-between"><button class="ghost" onclick="toMenu()">← Back</button><button class="pink" onclick="startGame('${t}')">Start ${esc(d.name)} ▶</button></div>
-  </div>`;
+  </div></div>`;
 }
 function hostGameOver(){
   const d=GAMES[S.lastGame]||{name:"Game",ic:"🎉"};
@@ -1049,7 +1060,7 @@ function playerTimer(){ const el=$("#ptimer"); if(!el)return; if(pLeftVal==null)
 function myPriv(){ return ST?.g?.priv?.[P.id]||{}; }
 function playerKey(){
   if(!ST) return "none"; const g=ST.g, pv=myPriv();
-  return [ST.phase,g?.type,g?.rid,g?.step,JSON.stringify(pv),g?.opts?.length,g?.q,(g?.choices||[]).join(),impShow,(g&&EXT[g.type]&&EXT[g.type].pkey)?EXT[g.type].pkey(g,pv):""].join("|");
+  return [ST.phase,ST.setup,g?.type,g?.rid,g?.step,JSON.stringify(pv),g?.opts?.length,g?.q,(g?.choices||[]).join(),impShow,(g&&EXT[g.type]&&EXT[g.type].pkey)?EXT[g.type].pkey(g,pv):""].join("|");
 }
 function renderPlayer(){
   const sc=$("#pscore"); if(sc) sc.textContent=fmtNum(myScore())+" pts";
@@ -1071,6 +1082,7 @@ function playerBody(){
     if(ST.phase==="final"){ const ps=ST.players.slice().sort((a,b)=>b.score-a.score); const won=ps[0]?.id===P.id;
       return `<div class="center"><div class="big-emoji">${won?"👑":"🎉"}</div><h2>${won?"YOU ARE THE CHAMPION!":esc(ps[0]?.name)+" wins!"}</h2><div class="muted" style="margin-top:8px">${rankLine()}</div></div>`; }
     if(ST.phase==="gameover"){ const mine=(ST.gained||[]).find(r=>r.id===P.id); return `<div class="center"><div class="big-emoji">🏁</div><h2>Game over!</h2><div class="status ${mine?"ok":""}" style="margin-top:12px">${mine?`You earned +${fmtNum(mine.p)} this game`:"No points this game"}</div><div class="muted" style="margin-top:10px">${rankLine()}</div></div>`; }
+    if(ST.phase==="setup"&&ST.setup&&GAMES[ST.setup]) return `<div class="center"><div style="font-size:60px">${GAMES[ST.setup].ic}</div><div class="muted">Up next</div><h2>${esc(GAMES[ST.setup].name)}</h2></div>${rulesHtml(ST.setup,true)}`;
     return `<div class="center"><div class="big-emoji">${esc(P.emoji)}</div><h2>You're in!</h2><div class="muted" style="margin-top:8px">${ST.phase==="lobby"?"Waiting for everyone to join. Look at the big screen.":"The host is picking the next game..."}</div><div class="muted" style="margin-top:8px">${rankLine()}</div></div>`;
   }
   const g=ST.g, pv=myPriv();
@@ -1714,6 +1726,31 @@ EXT.wishes={
  phone(g,pv){ return `<h2 class="center">💌 Send a birthday wish</h2><textarea id="wish" rows="4" maxlength="220" placeholder="Write something sweet (or roast them a little 😜)"></textarea><button class="pink" onclick="wishSend()">Send wish 💌</button>${pv.n?`<div class="status ok">You've sent ${pv.n} wish${pv.n>1?"es":""} 💖 Send more!</div>`:""}`; }
 };
 function wishSend(){ const t=$("#wish"); if(!t||!t.value.trim()){ if(t){ t.classList.add("shake"); setTimeout(()=>t.classList.remove("shake"),400); } return; } sendAns(t.value.trim()); t.value=""; }
+
+
+/* ===================== RULES ===================== */
+const RULES={
+ sketch:{how:["The AI draws something on the big screen, line by line.","Type your guess on your phone as fast as you can. Wrong guesses are free, so keep trying!","Type mode: letter hints like _ _ E _ appear over time. Pick mode: 4 options, only one try.","Hard mode draws the lines in random order and gives no hints."],score:["Faster correct guess = more points (up to 1,000)","+100 bonus for the first person to get it"]},
+ imposter:{how:["Secretly check your phone. Everyone gets the same secret word, except one person: the Imposter 🕵️","Go around the room. Each person says ONE word related to the secret word.","The Imposter has to bluff and blend in. They only know the category (on Hard, not even that).","When time's up, everyone votes on their phone for who the Imposter is."],score:["Imposter caught: everyone who voted for them gets +500","Imposter escapes: the Imposter gets +1,000"]},
+ pixel:{how:["A food photo starts super pixelated on the big screen and slowly gets clearer.","Team Bake 🎂 is cakes, desserts and bakes. Team Healthy 🥗 is fruits, veggies and healthy food.","Guess the dish on your phone. Wrong guesses are free.","Hard mode starts zoomed in and in black and white."],score:["Faster correct guess = more points (up to 1,000)","+100 bonus for the first person to get it"]},
+ closest:{how:["A question with a number answer appears, like \"How tall is the Burj Khalifa?\"","Nobody really knows, so just type your best guess on your phone.","You can change your guess until the time runs out."],score:["Closest: +1,000 · 2nd: +700 · 3rd: +500 · 4th: +300","Exactly right: +500 bonus"]},
+ fakefact:{how:["A weird but TRUE fact appears with a blank in it.","Everyone writes a believable FAKE answer to fill the blank.","All the fakes get mixed with the real answer. Vote for the one you think is TRUE."],score:["Pick the truth: +1,000","Every person fooled by your fake: +500 for you"]},
+ drawit:{how:["Players take turns being the artist. The artist picks 1 of 3 words on their phone.","The artist draws on their phone and it shows up live on the big screen.","Everyone else types guesses on their phone. Letter hints appear over time (none on Hard).","Artist: no letters, numbers or talking! 🤐"],score:["Guessers: faster = more points (up to 1,000)","Artist: +150 for every person who guesses it"]},
+ telephone:{how:["Everyone writes a funny phrase.","Then it gets passed along secretly: you draw someone else's phrase, the next person guesses your drawing, the next draws that guess, and so on.","Everyone plays at the same time on different chains.","At the end, every chain is replayed on the big screen. Watch it go wrong 😂"],score:["+100 for every step you complete","+300 to everyone in a chain if the final guess matches the original phrase"]},
+ whosaid:{how:["A fun question appears. Everyone answers anonymously on their phone.","The answers are shown one by one on the big screen.","For each answer, vote for who you think wrote it. If it's yours, vote for someone else to throw people off 😏"],score:["Correct guess: +300","Every person you fool: +150 for you"]},
+ ttl:{how:["Everyone writes 3 statements about themselves: 2 true and 1 lie, and marks which one is the lie.","One by one, each person goes in the spotlight and their 3 statements show on the big screen.","Everyone else votes for the lie. Spotlight person: keep a straight face! 😐"],score:["Spot the lie: +500","Every person you fool: +250 for you"]},
+ reaction:{how:["Your phone turns into a big RED button. Wait...","The moment it turns GREEN, tap as fast as you can!","Medium and Hard throw in fake color flashes to trick you. Don't fall for them.","Tap too early and you're in the HOT SEAT: answer a penalty question in front of everyone 😈"],score:["Fastest: +500 · 2nd: +300 · 3rd: +150","Penalty questions never repeat until all 100 are used"]},
+ wishes:{how:["Type birthday wishes on your phone. Send as many as you like!","Wishes pop up on the big screen as they arrive.","When everyone's done, hit Start slideshow to show them one by one 🎉"],score:["No points here, just love 💖"]}
+};
+function rulesHtml(t,phone){
+  const r=RULES[t]; if(!r) return ""; const d=GAMES[t]||{};
+  const dbl=!d.noScore&&S&&S.settings&&S.settings.global&&S.settings.global.double;
+  const dblPhone=phone&&!d.noScore;
+  return `<div class="card rules ${phone?"rules-phone":""}">
+    <h3>📜 How to play</h3><ol>${r.how.map(x=>`<li>${esc(x)}</li>`).join("")}</ol>
+    <h3>🏆 Scoring</h3><ul class="score">${r.score.map(x=>`<li>${esc(x)}</li>`).join("")}${dbl&&!phone?`<li>⚡ Final round: double points!</li>`:""}${dblPhone?`<li>⚡ Watch out for double points in the final round</li>`:""}</ul>
+  </div>`;
+}
 
 
 /* ======================= BOOT ========================== */
