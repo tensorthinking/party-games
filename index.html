@@ -245,12 +245,13 @@ textarea{resize:none}
 <canvas id="confetti"></canvas>
 <script src="doodles.js"></script>
 <script src="food.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>window.supabase||document.write('<script src="https://unpkg.com/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"><\/script>')</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 /* ================= CONFIG ================= */
 const SB_URL = "https://xfjxbdjrjzvuvuechwke.supabase.co";
-const SB_KEY = "sb_publishable_zfYFI4FXmzkr55KXrgJ1SA_-6K8pZtt";
+const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhmanhiZGpyanp2dXZ1ZWNod2tlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI1MTA0ODUsImV4cCI6MjEwODA4NjQ4NX0.E_9arXChFfWv-G6egd76u80HlwaoefYEYir0Izz6Eko";
 
 /* ================= CONTENT ================= */
 /* d: 1 easy, 2 medium, 3 hard */
@@ -503,15 +504,37 @@ function confetti(ms=4000){
 /* ================= REALTIME ================= */
 const params = new URLSearchParams(location.search);
 let channel = null, connected = false;
+let SBC=null, connRetry=null, connFails=0, stopConn=false;
 function connect(room, onMsg, onReady){
-  const sb = supabase.createClient(SB_URL, SB_KEY, {realtime:{params:{eventsPerSecond:40}}});
-  channel = sb.channel("bdayparty-"+room, {config:{broadcast:{self:false,ack:false}}});
-  channel.on("broadcast",{event:"msg"},({payload})=>onMsg(payload));
-  channel.subscribe(status=>{
-    connected = status==="SUBSCRIBED";
-    const d=$("#conn-dot"); if(d)d.classList.toggle("on",connected);
-    if(connected&&onReady)onReady();
-  });
+  if(!window.supabase||!supabase.createClient){ connFails=99; connProblem(); return; }
+  try{
+    if(!SBC) SBC = supabase.createClient(SB_URL, SB_KEY, {realtime:{params:{eventsPerSecond:40}}});
+    if(channel){ try{ SBC.removeChannel(channel); }catch(e){} }
+    const ch = SBC.channel("bdayparty-"+room, {config:{broadcast:{self:false,ack:false}}});
+    channel = ch;
+    ch.on("broadcast",{event:"msg"},({payload})=>onMsg(payload));
+    ch.subscribe(status=>{
+      if(ch!==channel) return;
+      connected = status==="SUBSCRIBED";
+      const d=$("#conn-dot"); if(d)d.classList.toggle("on",connected);
+      if(connected){ connFails=0; if(onReady) onReady(); return; }
+      if(!stopConn&&(status==="CHANNEL_ERROR"||status==="TIMED_OUT"||status==="CLOSED")){
+        connFails++; connProblem(); clearTimeout(connRetry);
+        connRetry=setTimeout(()=>connect(room,onMsg,onReady),Math.min(8000,1500*connFails));
+      }
+    });
+  }catch(e){ connFails++; connProblem(); clearTimeout(connRetry); connRetry=setTimeout(()=>connect(room,onMsg,onReady),3000); }
+}
+function connProblem(){
+  if(S) { if(connFails>=2) toast("Connection trouble, retrying... Check the laptop's internet."); return; }
+  if(P&&!ST) showConnHelp();
+}
+function showConnHelp(){
+  const b=$("#pbody"); if(!b||ST) return;
+  const noLib=!window.supabase;
+  b.innerHTML=`<div class="status bad">${noLib?"Couldn't load the game's connection.":"Still trying to connect..."}</div>
+  <div class="muted center" style="line-height:1.5">Check your phone's internet (try mobile data instead of Wi-Fi), and make sure the laptop is showing the QR code.<br>If you scanned the QR from WhatsApp or a camera app, open the link in <b>Chrome</b> or <b>Safari</b> instead.</div>
+  <button class="pink" onclick="location.reload()">🔄 Try again</button>`;
 }
 function send(payload){ if(channel) channel.send({type:"broadcast",event:"msg",payload}).catch(()=>{}); }
 
@@ -1114,12 +1137,13 @@ function doJoin(){ const n=$("#nm").value.trim(); if(!n){ $("#nm").classList.add
 function joinRoom(){
   pView=""; renderPlayerShell(`<div class="status">Connecting...</div>`);
   if(!channel) connect(P.room, playerOnMsg, ()=>sendJoin()); else sendJoin();
+  setTimeout(()=>{ if(!ST) showConnHelp(); },9000);
   setInterval(()=>{ if(connected){ if(!ST) sendJoin(); else send({k:"ping",id:P.id}); } },4000);
   setInterval(playerTimer,500);
 }
 function sendJoin(){ send({k:"join",id:P.id,name:P.name,emoji:P.emoji}); }
 function playerOnMsg(m){
-  if(m.k==="kicked"&&m.id===P.id){ $("#app").innerHTML=`<div class="phone"><div class="phone-body center"><h2>You were removed by the host</h2></div></div>`; channel&&channel.unsubscribe(); return; }
+  if(m.k==="kicked"&&m.id===P.id){ $("#app").innerHTML=`<div class="phone"><div class="phone-body center"><h2>You were removed by the host</h2></div></div>`; stopConn=true; channel&&channel.unsubscribe(); return; }
   if(m.k==="nudge"&&m.id===P.id){ nudge={msg:m.msg,c:m.c,rid:m.rid}; const el=$("#nudge"); if(el){ el.className="status "+(m.c||""); el.textContent=m.msg; el.style.display=""; } else { pView=""; renderPlayer(); } if(navigator.vibrate)navigator.vibrate(120); return; }
   if(pextMsg(m)) return;
   if(m.k!=="state") return;
