@@ -177,6 +177,64 @@ textarea{resize:none}
 .rules-phone h3{font-size:22px}
 .rules-phone ol,.rules-phone ul{font-size:16px;padding-left:22px;margin-bottom:12px}
 @media (max-width:1100px){.setupwrap{grid-template-columns:1fr}}
+:root{--art:min(calc(100vh - 180px),calc(100vw - 360px));--artc:min(calc(100vh - 262px),calc(100vw - 360px));--art2:min(calc(100vh - 270px),calc(100vw - 650px));--art2c:min(calc(100vh - 350px),calc(100vw - 650px))}
+.host-main{position:relative}
+.stage.g{padding-top:62px}
+.stage.g>.gbar:first-child{position:absolute;top:0;left:0;right:0}
+.art.wc{width:var(--artc);height:var(--artc)}
+.art.sm.wc{width:var(--art2c);height:var(--art2c)}
+.choices{width:var(--artc)}
+.choices div{font-size:19px;padding:10px 8px;line-height:1.1}
+.choices.sm{width:var(--art2c)}
+.choices.sm div{font-size:16px;padding:8px 6px}
+.host.nosb{grid-template-columns:1fr}
+.revealgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,470px);gap:22px;width:100%;align-items:start}
+.rv-left{display:flex;flex-direction:column;align-items:center;gap:14px;min-width:0}
+.lb-card{text-align:left;padding:16px}
+.lb-card h3{font-size:28px;margin-bottom:8px}
+.lb-row{display:grid;grid-template-columns:44px 32px minmax(0,1fr) 86px 86px;align-items:center;gap:4px;padding:7px 10px;border-radius:12px;background:#ffffff0d;margin-bottom:6px;font-weight:700;font-size:19px;animation:pop .35s}
+.lb-row.lb-head{background:none;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;padding-top:0;padding-bottom:0;margin-bottom:2px;animation:none}
+.lb-row.lb-head span{text-align:right}
+.lb-row.up{background:#45e07a1f}
+.lb-rank{font-family:"Baloo 2";font-size:20px;text-align:center}
+.lb-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb-name small{display:block;font-size:13px;font-weight:600;color:var(--muted);white-space:normal}
+.lb-name small.ok{color:var(--green)}
+.lb-name small.no{color:#ff8fa3}
+.lb-gain{color:var(--green);font-family:"Baloo 2";font-size:22px;text-align:right}
+.lb-tot{color:var(--yellow);font-family:"Baloo 2";font-size:24px;text-align:right}
+.ansbanner{background:var(--green);color:#0b2a17;border-radius:20px;padding:12px 28px;text-align:center;box-shadow:0 8px 30px #0005;animation:pop .4s;max-width:100%}
+.ansbanner .lbl{font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:.06em;opacity:.8}
+.ansbanner .txt{font-family:"Baloo 2";font-weight:800;font-size:min(4.6vw,50px);line-height:1.08}
+.ansbanner.red{background:var(--red);color:#fff}
+.ansbanner.yellow{background:var(--yellow);color:#1a1033}
+.art.sm{width:var(--art2);height:var(--art2)}
+.choices.sm{width:var(--art2)}
+.choices div.gone,.pick4 button.gone{opacity:.25;text-decoration:line-through}
+.opts.sm .opt{font-size:20px;padding:10px 14px}
+.board-row.me{outline:2px solid var(--yellow)}
+.mini{padding:12px}
+.steps{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
+.stp{background:var(--card2);border-radius:16px;padding:10px 18px;font-weight:700;font-size:20px;display:flex;gap:8px;align-items:center;opacity:.55}
+.stp.now{background:var(--yellow);color:#1a1033;opacity:1;transform:scale(1.08)}
+.stp.done{opacity:.9;background:#45e07a33}
+.stp .ic{font-size:24px}
+.arr{font-size:24px;opacity:.6}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:1050px}
+.chip.ok{background:var(--green);color:#0b2a17}
+.chainrow{display:flex;align-items:center;justify-content:center;gap:12px;width:100%}
+.cbox{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0}
+.cbox .who{font-size:16px;color:var(--muted);font-weight:700}
+.cbox canvas{background:#fff;border-radius:18px;box-shadow:0 10px 30px #0006;display:block}
+.cbox .mark{font-weight:800;font-size:18px}
+.carr{font-size:38px;opacity:.7}
+.steplbl{background:var(--yellow);color:#1a1033;border-radius:12px;padding:8px 12px;text-align:center;font-weight:800;letter-spacing:.04em}
+.wishstage{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:calc(100vh - 60px);width:100%}
+.wishctl{opacity:.35;transition:opacity .2s}
+.wishctl:hover{opacity:1}
+.credits{font-size:13px;color:var(--muted)}
+.credits a{color:var(--muted)}
+@media (max-width:1100px){.revealgrid{grid-template-columns:1fr}:root{--art2:min(calc(100vh - 290px),calc(100vw - 60px))}}
 @media (max-width:900px){.host{grid-template-columns:1fr}:root{--art:min(calc(100vh - 160px),calc(100vw - 44px))}.big-q{font-size:32px}.choices{grid-template-columns:1fr 1fr}}
 </style>
 </head>
@@ -185,6 +243,8 @@ textarea{resize:none}
 <div id="reacts"></div>
 <div id="toast"></div>
 <canvas id="confetti"></canvas>
+<script src="doodles.js"></script>
+<script src="food.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
@@ -484,7 +544,7 @@ function addScore(id, pts){
   if(!S.players[id]) return 0;
   const g=S.game; const p=Math.round(pts*(g&&g.mult||1));
   S.players[id].score=(S.players[id].score||0)+p;
-  if(g){ g.gained[id]=(g.gained[id]||0)+p; }
+  if(g){ g.gained[id]=(g.gained[id]||0)+p; g.rg=g.rg||{}; g.rg[id]=(g.rg[id]||0)+p; }
   return p;
 }
 
@@ -522,7 +582,7 @@ function publicState(){
     const ids=activeIds();
     if(EXT[g.type]) EXT[g.type].pub(g,out.g,ids);
     if(isGuess(g)){
-      out.g.mode=g.cfg.mode; out.g.hint=g.hint||"";
+      out.g.mode=g.cfg.mode; out.g.hint=g.hint||""; out.g.removed=g.removed||null;
       if(g.cfg.mode==="pick"&&g.step!=="ready") out.g.choices=g.choices;
       ids.forEach(id=>{const r=g.res[id]; out.g.priv[id]= r?{ok:!r.wrong,wrong:!!r.wrong,pts:r.pts}:{tries:(g.tries[id]||0)};});
       if(g.step==="reveal") out.g.answer=g.answerLabel;
@@ -557,21 +617,18 @@ function toggleDouble(){ S.settings.global.double=!S.settings.global.double; per
 
 function buildPool(type,cfg){
   if(EXT[type]) return EXT[type].pool?EXT[type].pool(cfg):null;
-  if(type==="sketch"){ const ok={easy:[1],medium:[1,2],hard:[2,3]}[cfg.diff]; return shuffle(DRAWINGS.filter(d=>ok.includes(d.d))); }
-  if(type==="pixel"){
-    const own=shuffle(customFoods);
-    return own.concat(shuffle(FOODS));
-  }
+  if(type==="sketch") return fresh("sketch",sketchItems(cfg),x=>x.a[0]);
+  if(type==="pixel") return shuffle(customFoods).concat(fresh("pixel",foodBase(cfg),x=>x.url||x.c));
   if(type==="closest"){ const ok={easy:[1],medium:[2,1],hard:[3,2]}[cfg.diff];
-    const a=shuffle(CLOSEST.filter(q=>q.d===ok[0])), b=shuffle(CLOSEST.filter(q=>q.d===ok[1])); return a.concat(b); }
-  if(type==="fakefact") return shuffle(FAKEFACTS);
+    const a=fresh("closest",CLOSEST.filter(q=>q.d===ok[0]),x=>x.q), b=fresh("closest",CLOSEST.filter(q=>q.d===ok[1]),x=>x.q); return a.concat(b); }
+  if(type==="fakefact") return fresh("fakefact",FAKEFACTS,x=>x.q);
   return null;
 }
 function maxRounds(type){
   if(EXT[type]) return GAMES[type].rmax||10;
   const cfg=S.settings[type]||{};
   if(type==="sketch"||type==="closest") return Math.max(1,buildPool(type,cfg).length);
-  if(type==="pixel") return FOODS.length+customFoods.length;
+  if(type==="pixel") return foodBase(cfg).length+customFoods.length;
   if(type==="fakefact") return FAKEFACTS.length;
   return 10;
 }
@@ -591,16 +648,18 @@ function startGame(type){
 function nextRound(){
   const g=S.game; g.idx++;
   if(g.idx>g.total){ endGame(); return; }
-  g.rid=uid(); g.mult=(S.settings.global.double&&g.total>1&&g.idx===g.total)?2:1;
+  g.rid=uid(); g.rg={}; g.mult=(S.settings.global.double&&g.total>1&&g.idx===g.total)?2:1;
   const ids=activeIds(), now=Date.now();
   if(EXT[g.type]){ EXT[g.type].round(g,now,ids); if(S.game!==g) return; renderHost(true); broadcast(); return; }
   if(isGuess(g)){
-    g.item=g.pool[(g.idx-1)%g.pool.length]; g.res={}; g.tries={}; g.feed=[]; g.hint="";
+    g.item=g.pool[(g.idx-1)%g.pool.length]; g.res={}; g.tries={}; g.feed=[]; g.hint=""; g.removed=null;
+    if(g.type==="sketch") markUsed("sketch",g.item.a[0]); else if(!String(g.item.url||"").startsWith("blob:")) markUsed("pixel",g.item.url||g.item.c);
     g.answerLabel = cap(g.item.a[0]);
-    const letters=[...g.answerLabel].map((c,i)=>c===" "?-1:i).filter(i=>i>=0);
+    const letters=[...g.answerLabel].map((c,i)=>/[a-z0-9]/i.test(c)?i:-1).filter(i=>i>=0);
     g.revealOrder=shuffle(letters);
-    g.hintMax = g.cfg.mode==="pick" ? -1 : {easy:Math.ceil(letters.length*0.5),medium:Math.ceil(letters.length*0.25),hard:-1}[g.cfg.diff];
-    g.order = g.cfg.diff==="hard" ? shuffle(g.item.p||[]) : (g.item.p||[]);
+    g.hintMax = g.cfg.mode==="pick" ? -1 : g.type==="pixel" ? Math.max(1,Math.ceil(letters.length*{easy:.5,medium:.35,hard:.25}[g.cfg.diff])) : {easy:Math.ceil(letters.length*0.5),medium:Math.ceil(letters.length*0.25),hard:-1}[g.cfg.diff];
+    const pp = g.item.dz ? doodlePaths(pick(g.item.v)) : (g.item.p||[]);
+    g.order = g.cfg.diff==="hard" ? shuffle(pp) : pp;
     g.zoomC=[150+Math.random()*180,150+Math.random()*180];
     if(g.cfg.mode==="pick"){
       const labels=[...new Set(g.pool.map(x=>cap(x.a[0])))].filter(l=>tight(l)!==tight(g.answerLabel));
@@ -611,25 +670,26 @@ function nextRound(){
   }
   if(g.type==="imposter"){
     if(ids.length<3){ toast("Imposter needs at least 3 players."); S.phase="menu"; S.game=null; renderHost(true); broadcast(); return; }
-    const cats=g.cfg.diff==="easy"?EASY_IMP:Object.keys(IMPOSTER); g.cat=pick(cats); g.word=pick(IMPOSTER[g.cat]);
+    const cats=g.cfg.diff==="easy"?EASY_IMP:Object.keys(IMPOSTER);
+    const pr=fresh("imposter",[].concat(...cats.map(c=>IMPOSTER[c].map(w=>({c,w})))),x=>x.c+"/"+x.w)[0]; g.cat=pr.c; g.word=pr.w; markUsed("imposter",pr.c+"/"+pr.w);
     g.inRound=shuffle(ids); g.imp=pick(g.inRound); g.first=pick(g.inRound.filter(i=>i!==g.imp)); g.votes={};
     g.step="clues"; g.start=now; g.deadline=now+g.cfg.time*1000;
     SFX.start(); renderHost(true); broadcast(); return;
   }
-  if(g.type==="closest"){ g.item=g.pool[g.idx-1]; g.ans={}; g.pts=null; g.after="play"; g.dur=g.cfg.time*1000; }
-  if(g.type==="fakefact"){ g.item=g.pool[g.idx-1]; g.lies={}; g.votes={}; g.pts=null; g.opts=[]; g.after="write"; g.dur=g.cfg.time*1000; }
+  if(g.type==="closest"){ g.item=g.pool[g.idx-1]; markUsed("closest",g.item.q); g.ans={}; g.pts=null; g.after="play"; g.dur=g.cfg.time*1000; }
+  if(g.type==="fakefact"){ g.item=g.pool[g.idx-1]; markUsed("fakefact",g.item.q); g.lies={}; g.votes={}; g.pts=null; g.opts=[]; g.after="write"; g.dur=g.cfg.time*1000; }
   g.step="ready"; g.readyEnd=now+3200; g.deadline=null; lastCd=null;
   renderHost(true); broadcast();
 }
-function hintText(g,t){
+function hintText(g,n){
   if(g.hintMax==null||g.hintMax<0) return "";
-  const start = g.cfg.diff==="easy"?0.2:0.45;
-  let n=0; if(t>=start) n=Math.min(g.hintMax, Math.floor((t-start)/(0.9-start)*g.hintMax)+1);
+  if(g.type==="pixel"&&!n) return "";
   const shown=new Set(g.revealOrder.slice(0,n));
-  return [...g.answerLabel.toUpperCase()].map((c,i)=>c===" "?"  ":(shown.has(i)?c:"_")).join(" ");
+  return [...g.answerLabel.toUpperCase()].map((c,i)=>c===" "?"  ":(shown.has(i)||!/[A-Z0-9]/.test(c)?c:"_")).join(" ");
 }
 function endGame(){
-  const g=S.game;
+  const g=S.game; stopBdayMusic();
+  S.lastGainMap=g?Object.assign({},g.gained):{};
   if(g&&GAMES[g.type]&&GAMES[g.type].noScore){ S.phase="menu"; S.game=null; SFX.fanfare(); confetti(4000); persist(); renderHost(true); broadcast(); return; }
   S.lastGained = g ? Object.entries(g.gained).sort((a,b)=>b[1]-a[1]).map(([id,p])=>({id,p})) : [];
   S.lastGame = g ? g.type : null;
@@ -649,7 +709,7 @@ function handleAnswer(id, rid, v){
       const total=g.deadline-g.start, left=Math.max(0,g.deadline-Date.now());
       const first = Object.values(g.res).filter(r=>!r.wrong).length===0;
       const pts = addScore(id, Math.round(200 + 700*(left/total)) + (first?100:0));
-      g.res[id]={pts}; SFX.ding();
+      g.res[id]={pts,first}; SFX.ding();
       g.feed.push({c:"ok", t:`${p.emoji} ${p.name} got it!${first?" ⚡ FIRST":""}`});
     } else if(g.cfg.mode==="pick"){
       g.res[id]={pts:0,wrong:true}; SFX.buzz();
@@ -717,11 +777,11 @@ function revealClosest(){
 function startFakeVote(){
   const g=S.game; if(g.step!=="write")return;
   const map={};
-  Object.entries(g.lies).forEach(([id,t])=>{ const k=tight(t); if(!map[k]) map[k]={id:uid(),text:t,authors:[]}; map[k].authors.push(id); });
+  Object.entries(g.lies).forEach(([id,t])=>{ const k=tight(t); if(!map[k]) map[k]={id:uid(),text:fmtOpt(t),authors:[]}; map[k].authors.push(id); });
   let opts=Object.values(map);
   const decoys=(g.item.d||[]).slice();
-  while(opts.length<3&&decoys.length){ const d=decoys.shift(); if(!map[tight(d)]) opts.push({id:uid(),text:d,authors:[],house:true}); }
-  opts.push({id:uid(),text:g.item.t,authors:[],truth:true});
+  while(opts.length<3&&decoys.length){ const d=decoys.shift(); if(!map[tight(d)]) opts.push({id:uid(),text:fmtOpt(d),authors:[],house:true}); }
+  opts.push({id:uid(),text:fmtOpt(g.item.t),authors:[],truth:true});
   g.opts=shuffle(opts); g.votes={}; g.step="vote"; g.start=Date.now(); g.deadline=Date.now()+Math.max(25000,Math.round(g.cfg.time*500));
   SFX.start(); renderHost(true); broadcast();
 }
@@ -744,8 +804,9 @@ function hostTick(){
   }
   if(EXT[g.type]&&EXT[g.type].tick){ EXT[g.type].tick(g,now); if(S.game!==g) return; }
   if(isGuess(g)&&g.step==="play"){
-    const h=hintText(g,(now-g.start)/(g.deadline-g.start));
+    const h=hintText(g,hintCount(g,now));
     if(h!==g.hint){ g.hint=h; const el=$("#hint"); if(el) el.innerHTML=hintHtml(g); SFX.pop(); broadcast(); }
+    if(g.type==="pixel"&&g.cfg.mode==="pick"&&!g.removed&&g.deadline-now<=15000&&g.deadline-now>0){ g.removed=shuffle(g.choices.filter(c=>c!==g.answerLabel)).slice(0,2); SFX.boing(); renderHost(true); broadcast(); return; }
   }
   if(!g.deadline){ return; }
   const left=g.deadline-now, sec=Math.ceil(left/1000);
@@ -787,7 +848,12 @@ function sideBoard(){
   return html;
 }
 function feedHtml(g){ return (g.feed||[]).slice().reverse().map(f=>`<span class="${f.c}">${esc(f.t)}</span>`).join("")||`<span class="muted" style="background:none">Waiting for guesses...</span>`; }
-function hintHtml(g){ if(!g.hint) return g.cfg.mode==="pick"?`<span class="n">Pick from 4 on your phone</span>`:(g.cfg.diff==="hard"?`<span class="n">No hints in Hard mode 😈</span>`:""); const n=g.answerLabel.replace(/ /g,"").length; return esc(g.hint)+`<span class="n">${n} letters</span>`; }
+function hintHtml(g){
+  if(!g.hint){
+    if(g.type==="pixel") return `<span class="n">${g.cfg.mode==="pick"?(g.removed?"✂️ 50-50 used! Two wrong options are gone":"✂️ 50-50 lifeline in the last 15 seconds"):"💡 Letter hints unlock in the last 15 seconds"}</span>`;
+    return g.cfg.mode==="pick"?`<span class="n">Pick from 4 on your phone</span>`:(g.cfg.diff==="hard"?`<span class="n">No hints in Hard mode 😈</span>`:"");
+  }
+  const n=g.answerLabel.replace(/[^a-z0-9]/gi,"").length; return esc(g.hint)+`<span class="n">${n} letters</span>`; }
 function joinUrl(){ return location.origin+location.pathname+"?room="+S.room; }
 
 function renderHost(force){
@@ -795,14 +861,14 @@ function renderHost(force){
   const key=[S.phase,S.setupType,g?.type,g?.idx,g?.step].join("|");
   if(!force&&key===hostView){ updateHostLive(); return; }
   hostView=key; cancelAnimationFrame(animRAF);
-  let main="", tight_=false, showTop=true;
+  let main="", tight_=false, showTop=true; stageBoard=false;
   if(S.phase==="lobby") main=hostLobby();
   else if(S.phase==="menu") main=hostMenu();
   else if(S.phase==="setup") main=hostSetup();
   else if(S.phase==="gameover") main=hostGameOver();
   else if(S.phase==="final") main=hostFinal();
   else if(g){ main=hostGame(); showTop=false; tight_=(isGuess(g)||(EXT[g.type]&&EXT[g.type].tight))&&g.step!=="ready"; }
-  $("#app").innerHTML=`<div class="host"><div class="host-main">${showTop?`<div class="host-top"><h1 class="party-title">${esc(S.title)}</h1><div class="row"><button class="ghost small mutebtn" onclick="toggleMute()">${MUTED?"🔇":"🔊"}</button><button class="ghost small" onclick="fullscreen()">⛶ Fullscreen</button></div></div>`:""}<div class="stage ${tight_?"tight":""}" id="stage">${main}</div></div><div id="side" class="side">${sideBoard()}</div></div>`;
+  $("#app").innerHTML=`<div class="host ${stageBoard?"nosb":""}"><div class="host-main">${showTop?`<div class="host-top"><h1 class="party-title">${esc(S.title)}</h1><div class="row"><button class="ghost small mutebtn" onclick="toggleMute()">${MUTED?"🔇":"🔊"}</button><button class="ghost small" onclick="fullscreen()">⛶ Fullscreen</button></div></div>`:""}<div class="stage ${tight_||stageBoard?"tight":""} ${S.phase==="game"&&g&&!(g.type==="wishes"&&g.step==="show")?"g":""}" id="stage">${main}</div></div><div id="side" class="side" style="${stageBoard?"display:none":""}">${sideBoard()}</div></div>`;
   afterHostRender();
 }
 function updateHostLive(){
@@ -854,7 +920,8 @@ function hostSetup(){
   const mr=Math.min(20,maxRounds(t));
   let up="";
   if(t==="pixel"){
-    up=`<div class="setrow"><div class="lbl">Your own food photos<small>Shown first, before the built-in ones. Name each file after the dish, e.g. red velvet cake.jpg</small></div>
+    up=`<div class="setrow"><div class="lbl">Pictures<small>${c.pics==="emoji"?"Cartoon emoji food. Easier!":"Real food photos. Harder and more fun!"}</small></div>${seg("pics",[["real","📷 Real photos"],["emoji","😀 Emojis"]])}</div>
+      <div class="setrow"><div class="lbl">Your own food photos<small>Shown first, before the built-in ones. Name each file after the dish, e.g. red velvet cake.jpg</small></div>
       <div class="row wrap"><label class="uplbtn">🎂 Add Team Bake<input type="file" accept="image/*" multiple style="display:none" onchange="addPhotos(this.files,'bake')"></label><label class="uplbtn">🥗 Add Team Healthy<input type="file" accept="image/*" multiple style="display:none" onchange="addPhotos(this.files,'healthy')"></label></div></div>
       ${customFoods.length?`<div class="uploads">${customFoods.map((f,i)=>`<span>${f.team==="bake"?"🎂":"🥗"} ${esc(f.a[0])} <a href="#" onclick="customFoods.splice(${i},1);renderHost(true);return false" style="color:var(--pink)">✕</a></span>`).join("")}</div>`:""}`;
   }
@@ -869,15 +936,15 @@ function hostSetup(){
     ${d.noScore?"":`<div class="setrow"><div class="lbl">Final round double points<small>Keeps everyone in the race till the end</small></div><div class="seg"><button class="${S.settings.global.double?"on":""}" onclick="toggleDouble()">On</button><button class="${S.settings.global.double?"":"on"}" onclick="toggleDouble()">Off</button></div></div>`}
     ${d.minPlayers?`<div class="muted">Needs at least ${d.minPlayers} players. ${activeIds().length} joined.</div>`:""}
     <div class="row" style="justify-content:space-between"><button class="ghost" onclick="toMenu()">← Back</button><button class="pink" onclick="startGame('${t}')">Start ${esc(d.name)} ▶</button></div>
+    ${t==="pixel"||t==="sketch"?`<div class="credits">${t==="pixel"?"Photos from Wikimedia Commons":"Doodles from Google's Quick, Draw! dataset"}. <a href="credits.html" target="_blank">Credits</a></div>`:""}
   </div></div>`;
 }
 function hostGameOver(){
   const d=GAMES[S.lastGame]||{name:"Game",ic:"🎉"};
-  const rows=(S.lastGained||[]).slice(0,8);
-  return `<div class="pill">${d.ic} ${esc(d.name)} complete</div><h2 class="big-q">Game over!</h2>
-  <div class="muted" style="font-size:20px">Points earned this game</div>
-  <div class="res-list">${rows.map((r,i)=>`<div class="board-row"><span class="emo">${["🥇","🥈","🥉"][i]||esc(S.players[r.id]?.emoji)}</span>${esc(S.players[r.id]?.name)}<span class="sc">+${fmtNum(r.p)}</span></div>`).join("")||`<div class="muted">No points scored</div>`}</div>
+  const top=(S.lastGained||[])[0], tp=top&&S.players[top.id];
+  const left=`<div class="pill">${d.ic} ${esc(d.name)} complete</div><h2 class="big-q">Game over! 🏁</h2>${tp?answerBanner("⭐ Star of this game",`${esc(tp.emoji)} ${esc(tp.name)} <span style="font-size:.55em">+${fmtNum(top.p)}</span>`,"yellow"):""}
   <div class="toolbar"><button class="pink" onclick="toMenu()">Next game ▶</button><button class="ghost" onclick="openSetup('${S.lastGame}')">Play again</button><button class="teal" onclick="toFinal()">Crown the Champion 👑</button></div>`;
+  return revealLayout(left,boardHtml(S.lastGainMap||{},null,"🏆 Overall leaderboard","This game"));
 }
 function hostFinal(){
   const ps=playersArr().sort((a,b)=>(b.score||0)-(a.score||0));
@@ -898,40 +965,53 @@ function hostGame(){
   }
   if(EXT[g.type]) return EXT[g.type].host(g);
   if(isGuess(g)){
-    const team = g.type==="pixel" ? `<span class="pill" style="background:${g.item.team==="bake"?"var(--pink)":"var(--green)"};color:#1a1033">${g.item.team==="bake"?"🎂 Team Bake":"🥗 Team Healthy"}</span>`:"";
-    const art = g.type==="sketch" ? `<div class="art"><svg id="sk" viewBox="0 0 200 200" fill="none" stroke="#1a1033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></svg></div>`
-      : `<div class="art"><canvas id="px" width="600" height="600"></canvas></div>`;
-    const choices = g.cfg.mode==="pick" ? `<div class="choices">${g.choices.map(c=>`<div class="${g.step==="reveal"&&c===g.answerLabel?"ok":""}">${esc(c)}</div>`).join("")}</div>`:"";
-    if(g.step==="play") return `${gbar(g,"Reveal","revealGuess()",team)}<div class="hint" id="hint">${hintHtml(g)}</div>${art}${choices}`;
-    const got=Object.entries(g.res).filter(([,r])=>!r.wrong).sort((a,b)=>b[1].pts-a[1].pts);
-    return `${gbar(g,g.idx<g.total?"Next ▶":"Finish 🏁","nextRound()",team)}<h2 style="font-size:40px">It was: <span style="color:var(--yellow)">${esc(g.answerLabel)}</span> ${got.length?`<span class="muted" style="font-size:22px">${got.length} got it</span>`:`<span class="muted" style="font-size:22px">Nobody got it 😅</span>`}</h2>${art}${choices}`;
+    const team = g.type==="pixel" ? `<span class="pill" style="background:${g.item.team==="bake"?"var(--pink)":g.item.team==="healthy"?"var(--green)":"var(--card2)"};color:#1a1033">${g.item.team==="bake"?"🎂 Team Bake":g.item.team==="healthy"?"🥗 Team Healthy":"📸 Your photo"}</span>`:"";
+    const rv=g.step==="reveal";
+    const wc = g.cfg.mode==="pick"?"wc":"";
+    const art = g.type==="sketch" ? `<div class="art ${rv?"sm":""} ${wc}"><svg id="sk" viewBox="0 0 200 200" fill="none" stroke="#1a1033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></svg></div>`
+      : `<div class="art ${rv?"sm":""} ${wc}"><canvas id="px" width="600" height="600"></canvas></div>`;
+    const choices = g.cfg.mode==="pick" ? `<div class="choices ${rv?"sm":""}">${g.choices.map(c=>`<div class="${rv&&c===g.answerLabel?"ok":""} ${!rv&&(g.removed||[]).includes(c)?"gone":""}">${esc(c)}</div>`).join("")}</div>`:"";
+    if(!rv) return `${gbar(g,"Reveal","revealGuess()",team)}<div class="hint" id="hint">${hintHtml(g)}</div>${art}${choices}`;
+    const ids=activeIds(), n=ids.filter(id=>g.res[id]&&!g.res[id].wrong).length, marks={};
+    ids.forEach(id=>{ const r=g.res[id], t=g.tries[id]||0; marks[id]= r&&!r.wrong?{ok:true,note:r.first?"Got it first! ⚡":"Got it"}: r&&r.wrong?{ok:false,note:"Wrong pick"}:{ok:false,note:t?`${t} wrong guess${t>1?"es":""}`:"No guess"}; });
+    const left=`${answerBanner(g.type==="sketch"?"✏️ It was":"🍽️ The dish was",esc(g.answerLabel))}<div class="muted" style="font-size:20px">${n?`${n} of ${ids.length} got it`:"Nobody got it 😅"}</div>${art}${choices}`;
+    return `${gbar(g,g.idx<g.total?"Next ▶":"Finish 🏁","nextRound()",team)}${revealLayout(left,boardHtml(g.rg,marks))}`;
   }
   if(g.type==="imposter"){
     if(g.step==="clues"){ const f=S.players[g.first];
       return `${gbar(g,"Start voting 🗳️","startImposterVote()")}<div class="big-emoji">🕵️</div><h2 class="big-q">Check your phone secretly!</h2>
       <div class="muted" style="font-size:24px;max-width:860px;line-height:1.4">Everyone has the same secret word, except the Imposter${g.cfg.diff==="hard"?", who has NO idea what it is":`, who only knows the category: <b style="color:var(--yellow)">${esc(g.cat)}</b>`}.<br>Go around the room. Each person says <b>ONE word</b> about the secret word. Go 2 rounds if you like.${f?`<br><b style="color:#fff">${esc(f.emoji)} ${esc(f.name)}</b> starts!`:""}</div>`; }
     if(g.step==="vote") return `${gbar(g,"Reveal","revealImposter()")}<div class="big-emoji">🗳️</div><h2 class="big-q">Who's the Imposter?</h2><div class="muted" style="font-size:22px">Vote on your phone</div><div class="pill" id="count">${countText()}</div>`;
-    const imp=S.players[g.imp];
+    const imp=S.players[g.imp], marks={};
     const rows=g.inRound.map(id=>({id,n:g.tally[id]||0})).sort((a,b)=>b.n-a.n);
-    return `${gbar(g,g.idx<g.total?"Next round ▶":"Finish 🏁","nextRound()")}<h2 class="big-q">The Imposter was ${esc(imp?.emoji)} <span style="color:var(--pink)">${esc(imp?.name)}</span>!</h2>
+    g.inRound.forEach(id=>{ const v=g.votes[id], vn=v?(S.players[v]?.name||""):""; marks[id]= id===g.imp?{ok:!g.caught,note:g.caught?"🕵️ The Imposter, caught!":"🕵️ The Imposter, escaped!"}: v===g.imp?{ok:true,note:"Voted "+vn}:{ok:false,note:v?"Voted "+vn:"No vote"}; });
+    const left=`${answerBanner("🕵️ The Imposter was",`${esc(imp?.emoji)} ${esc(imp?.name)}`,g.caught?"":"red")}
       <div class="fun" style="font-size:32px">Secret word: <span style="color:var(--yellow)">${esc(g.word)}</span></div>
       <div class="pill" style="background:${g.caught?"var(--green)":"var(--red)"};color:${g.caught?"#10331d":"#fff"};font-size:18px">${g.caught?`Caught! Correct voters +${500*g.mult}`:`Got away with it! Imposter +${1000*g.mult}`}</div>
       <div class="res-list">${rows.map(r=>`<div class="board-row"><span class="emo">${esc(S.players[r.id]?.emoji)}</span>${esc(S.players[r.id]?.name)}${r.id===g.imp?" 🕵️":""}<span class="sc">${r.n} vote${r.n===1?"":"s"}</span></div>`).join("")}</div>`;
+    return `${gbar(g,g.idx<g.total?"Next round ▶":"Finish 🏁","nextRound()")}${revealLayout(left,boardHtml(g.rg,marks))}`;
   }
   if(g.type==="closest"){
     if(g.step==="play") return `${gbar(g,"Reveal","revealClosest()")}<div class="big-emoji">🎯</div><h2 class="big-q">${esc(g.item.q)}</h2><div class="pill" style="font-size:18px">Answer in ${esc(g.item.u)}</div><div class="pill" id="count">${countText()}</div>`;
-    return `${gbar(g,g.idx<g.total?"Next ▶":"Finish 🏁","nextRound()")}<h2 class="big-q" style="font-size:34px">${esc(g.item.q)}</h2><div class="fun" style="font-size:72px;color:var(--yellow)">${fmtNum(g.item.a)} <span style="font-size:28px">${esc(g.item.u)}</span></div>
-      <div class="res-list">${g.rows.map((r,i)=>`<div class="board-row"><span class="emo">${i===0?"🥇":i===1?"🥈":i===2?"🥉":esc(S.players[r.id]?.emoji)}</span>${esc(S.players[r.id]?.name)}<span class="muted" style="margin-left:10px">guessed ${fmtNum(r.v)}${r.d===0?" 🎯 EXACT!":""}</span><span class="sc">+${g.pts[r.id]}</span></div>`).join("")||`<div class="muted">No guesses</div>`}</div>`;
+    const marks={}; (g.rows||[]).forEach((r,i)=>{ marks[r.id]={ok:r.d===0?true:null,note:`Guessed ${fmtNum(r.v)}${r.d===0?" 🎯 EXACT!":` (off by ${fmtNum(r.d)})`}`}; }); activeIds().forEach(id=>{ if(!marks[id]) marks[id]={ok:false,note:"No guess"}; });
+    const left=`<h2 class="big-q" style="font-size:32px">${esc(g.item.q)}</h2>${answerBanner("🎯 The answer",`${fmtNum(g.item.a)} <span style="font-size:.5em">${esc(g.item.u)}</span>`)}
+      <div class="res-list">${(g.rows||[]).slice(0,3).map((r,i)=>`<div class="board-row"><span class="emo">${["🥇","🥈","🥉"][i]}</span>${esc(S.players[r.id]?.name)}<span class="muted" style="margin-left:10px">guessed ${fmtNum(r.v)}</span><span class="sc">+${g.pts[r.id]}</span></div>`).join("")||'<div class="muted">No guesses</div>'}</div>`;
+    return `${gbar(g,g.idx<g.total?"Next ▶":"Finish 🏁","nextRound()")}${revealLayout(left,boardHtml(g.rg,marks))}`;
   }
   if(g.type==="fakefact"){
     const q=`<h2 class="big-q">${esc(g.item.q).replace("____",'<span style="color:var(--yellow)">_____</span>')}</h2>`;
     if(g.step==="write") return `${gbar(g,"Start voting","startFakeVote()")}<div class="big-emoji">🤥</div>${q}<div class="muted" style="font-size:22px">This is a REAL fact. Write a believable FAKE answer on your phone to fool everyone.</div><div class="pill" id="count">${countText()}</div>`;
     const L="ABCDEFGHIJKL";
     if(g.step==="vote") return `${gbar(g,"Reveal","revealFake()")}${q}<div class="muted" style="font-size:22px">Which one is the TRUTH? Vote on your phone.</div><div class="opts">${g.opts.map((o,i)=>`<div class="opt"><span class="muted">${L[i]}.</span> ${esc(o.text)}</div>`).join("")}</div><div class="pill" id="count">${countText()}</div>`;
-    return `${gbar(g,g.idx<g.total?"Next ▶":"Finish 🏁","nextRound()")}${q}<div class="opts">${g.opts.map((o,i)=>{ const voters=Object.entries(g.votes).filter(([,v])=>v===o.id).map(([id])=>S.players[id]);
-      return `<div class="opt ${o.truth?"truth":""}">${o.truth?`<span class="tag">TRUTH</span>`:""}<span class="muted">${L[i]}.</span> ${esc(o.text)}
-      <div class="who">${o.truth?"":o.house?"🏠 House fake":"✍️ "+o.authors.map(a=>esc(S.players[a]?.name)).join(", ")}</div>
-      <div class="who">${voters.length?"Picked by: "+voters.map(p=>esc(p?.emoji)+" "+esc(p?.name)).join(", "):"No votes"}</div></div>`; }).join("")}</div>`;
+    const truth=g.opts.find(o=>o.truth), marks={};
+    activeIds().forEach(id=>{ const o=g.opts.find(x=>x.id===g.votes[id]);
+      const fooled=Object.values(g.votes).filter(x=>{ const oo=g.opts.find(y=>y.id===x); return oo&&oo.authors.includes(id); }).length, fl=fooled?` · fooled ${fooled} 😈`:"";
+      marks[id]= !o?{ok:false,note:"No vote"+fl}: o.truth?{ok:true,note:"Found the truth"+fl}:{ok:false,note:`Fell for ${o.house?"a house fake":o.authors.map(a=>S.players[a]?.name).join(" & ")+"'s fake"}`+fl}; });
+    const filled=`<h2 class="big-q" style="font-size:30px">${esc(g.item.q).replace("____",`<span style="color:var(--green)">${esc(truth.text.toLowerCase())}</span>`)}</h2>`;
+    const fakes=g.opts.filter(o=>!o.truth).map(o=>{ const voters=Object.entries(g.votes).filter(([,v])=>v===o.id).map(([id])=>S.players[id]);
+      return `<div class="opt">${esc(o.text)}<div class="who">${o.house?"🏠 House fake":"✍️ Fake by "+o.authors.map(a=>esc(S.players[a]?.name)).join(", ")} · ${voters.length?"fooled "+voters.map(p=>esc(p?.name)).join(", "):"fooled nobody"}</div></div>`; }).join("");
+    const left=`${filled}${answerBanner("✅ The truth",esc(truth.text))}<div class="opts sm">${fakes}</div>`;
+    return `${gbar(g,g.idx<g.total?"Next ▶":"Finish 🏁","nextRound()")}${revealLayout(left,boardHtml(g.rg,marks))}`;
   }
   return "";
 }
@@ -960,7 +1040,7 @@ const imgCache={};
 function loadFoodImg(item){
   const key=item.url||item.c;
   if(imgCache[key]) return imgCache[key];
-  const p=new Promise(res=>{ const im=new Image(); im.crossOrigin="anonymous"; im.onload=()=>res(im); im.onerror=()=>res(null); im.src=item.url||(TW+item.c+".svg"); setTimeout(()=>res(null),6000); });
+  const p=new Promise(res=>{ const im=new Image(); if(!item.url) im.crossOrigin="anonymous"; im.onload=()=>res(im); im.onerror=()=>res(null); im.src=item.url||(TW+item.c+".svg"); setTimeout(()=>res(null),6000); });
   imgCache[key]=p; return p;
 }
 function animatePixel(g){
@@ -995,7 +1075,7 @@ function animatePixel(g){
 /* host actions */
 function fullscreen(){ try{ if(document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen(); }catch(e){} }
 function setTitle(){ const v=$("#title-in").value.trim(); if(v){S.title=v.slice(0,60); persist(); renderHost(true); broadcast();} }
-function toMenu(){ audio(); S.phase="menu"; S.game=null; persist(); renderHost(true); broadcast(); }
+function toMenu(){ audio(); stopBdayMusic(); S.phase="menu"; S.game=null; persist(); renderHost(true); broadcast(); }
 function toFinal(){ S.phase="final"; S.game=null; persist(); renderHost(true); broadcast(); SFX.fanfare(); confetti(6000); }
 function resetScores(){ if(!confirm("Reset all scores to zero?"))return; Object.values(S.players).forEach(p=>p.score=0); S.played=[]; persist(); renderHost(true); broadcast(); }
 function kick(id){ const p=S.players[id]; if(!p)return; if(confirm(`Remove ${p.name}?`)){ p.kicked=true; send({k:"kicked",id}); persist(); renderHost(true); broadcast(); } }
@@ -1060,7 +1140,7 @@ function playerTimer(){ const el=$("#ptimer"); if(!el)return; if(pLeftVal==null)
 function myPriv(){ return ST?.g?.priv?.[P.id]||{}; }
 function playerKey(){
   if(!ST) return "none"; const g=ST.g, pv=myPriv();
-  return [ST.phase,ST.setup,g?.type,g?.rid,g?.step,JSON.stringify(pv),g?.opts?.length,g?.q,(g?.choices||[]).join(),impShow,(g&&EXT[g.type]&&EXT[g.type].pkey)?EXT[g.type].pkey(g,pv):""].join("|");
+  return [ST.phase,ST.setup,g?.type,g?.rid,g?.step,JSON.stringify(pv),g?.opts?.length,g?.q,(g?.choices||[]).join(),(g?.removed||[]).join(),impShow,(g&&EXT[g.type]&&EXT[g.type].pkey)?EXT[g.type].pkey(g,pv):""].join("|");
 }
 function renderPlayer(){
   const sc=$("#pscore"); if(sc) sc.textContent=fmtNum(myScore())+" pts";
@@ -1076,7 +1156,7 @@ function renderPlayer(){
 }
 function rankLine(){ if(!ST)return""; const ps=ST.players.slice().sort((a,b)=>b.score-a.score); const r=ps.findIndex(p=>p.id===P.id)+1; return r?`You're #${r} of ${ps.length}`:""; }
 function nudgeHtml(){ return `<div id="nudge" class="status ${nudge?.c||""}" style="${nudge?"":"display:none"}">${esc(nudge?.msg||"")}</div>`; }
-function playerBody(){
+function playerBody0(){
   if(!ST) return `<div class="status">Waiting for the host... make sure the laptop has the game open.</div>`;
   if(!ST.g){
     if(ST.phase==="final"){ const ps=ST.players.slice().sort((a,b)=>b.score-a.score); const won=ps[0]?.id===P.id;
@@ -1094,7 +1174,7 @@ function playerBody(){
     if(g.step==="play"){
       if(pv.ok) return `${head}<div class="status ok">🎉 You got it! +${pv.pts}</div><div class="muted center">Shhh, don't tell the others!</div>`;
       if(pv.wrong) return `${head}<div class="status bad">😬 Wrong pick! Wait for the next one.</div>`;
-      if(g.mode==="pick") return `${head}<h2 class="center">${ask}</h2><div class="muted center">One try only. Choose wisely!</div><div class="pick4">${(g.choices||[]).map(c=>`<button onclick="pickAns(this)" data-v="${esc(c)}">${esc(c)}</button>`).join("")}</div>`;
+      if(g.mode==="pick") return `${head}<h2 class="center">${ask}</h2><div class="muted center">One try only. Choose wisely!</div><div class="pick4">${(g.choices||[]).map(c=>`<button onclick="pickAns(this)" data-v="${esc(c)}" ${(g.removed||[]).includes(c)?'disabled class="gone"':""}>${esc(c)}</button>`).join("")}</div>${g.removed?`<div class="status close">✂️ 50-50! Two wrong answers removed</div>`:""}`;
       return `${head}<h2 class="center">${ask}</h2><div class="hint" id="phint">${esc(g.hint||"")}</div>${nudgeHtml()}
       <input id="ans" data-rid="${g.rid}" placeholder="Type your guess" autocomplete="off" autocapitalize="off"><button class="pink" onclick="submitAns(true)">Guess!</button>${pv.tries?`<div class="muted center">${pv.tries} guess${pv.tries>1?"es":""} so far. Keep going!</div>`:""}`;
     }
@@ -1297,7 +1377,7 @@ function clockBed(left){
   if(hs%2===0){ (sec%2?SFX.tickA:SFX.tickB)(); if(sec<=10) SFX.bass(); }
   else if(sec<=10) SFX.tickFast();
 }
-function toggleMute(){ MUTED=!MUTED; if(S){ S.muted=MUTED; persist(); } document.querySelectorAll(".mutebtn").forEach(b=>b.textContent=MUTED?"🔇":"🔊"); if(!MUTED) SFX.boing(); }
+function toggleMute(){ MUTED=!MUTED; if(S){ S.muted=MUTED; persist(); } document.querySelectorAll(".mutebtn").forEach(b=>b.textContent=MUTED?"🔇":"🔊"); if(MUTED) stopBdayMusic(); else { SFX.boing(); const gg=S&&S.game; if(gg&&gg.type==="wishes"&&gg.step==="show"&&gg.music) startBdayMusic(); } }
 function setCfgB(k,v){ S.settings[S.setupType][k]=v; persist(); renderHost(true); }
 
 /* ---------- helpers ---------- */
@@ -1349,7 +1429,7 @@ function bindPad(){
 let TASK=null;
 let RX={rid:null};
 function pextMsg(m){
-  if(m.k==="task"){ if(m.id!==P.id) return true; const t=m.t||{}; if(TASK&&TASK.rid===m.rid&&TASK.kk===t.kk) return true; TASK=Object.assign({rid:m.rid,sent:false},t); pView=""; renderPlayer(); return true; }
+  if(m.k==="task"){ if(m.id!==P.id) return true; const t=m.t||{}; if(TASK&&TASK.rid===m.rid&&TASK.kk===t.kk){ const pb=$("#pbody"); if(pb&&pb.textContent.includes("Loading your task")){ pView=""; renderPlayer(); } return true; } TASK=Object.assign({rid:m.rid,sent:false},t); pView=""; renderPlayer(); return true; }
   if(m.k==="collect"){ if(TASK&&TASK.rid===m.rid&&TASK.kk===m.kk&&!TASK.sent) telSend(true); return true; }
   if(m.k==="go"){ if(RX.rid!==m.rid) rReset(m.rid); if(RX.goAt==null) RX.goAt=performance.now(); RX.flash=false; rPaint(); return true; }
   if(m.k==="flash"){ if(RX.rid!==m.rid) rReset(m.rid); RX.flash=!!m.on; RX.fc=m.c; rPaint(); return true; }
@@ -1365,13 +1445,13 @@ EXT.drawit={
   if(!g.order) g.order=shuffle(ids);
   let d=g.order[(g.idx-1)%g.order.length]; if(!ids.includes(d)) d=pick(ids);
   g.drawer=d; g.strokes=[]; g.res={}; g.tries={}; g.feed=[]; g.word=null; g.hint=""; g.answerLabel="";
-  g.usedW=g.usedW||[]; const all=DRAW_WORDS[g.cfg.diff]; const pool=all.filter(w=>!g.usedW.includes(w));
-  g.opts=shuffle(pool.length>=3?pool:all).slice(0,3);
+  g.usedW=g.usedW||[]; const all=DRAW_WORDS[g.cfg.diff];
+  g.opts=fresh("drawit",all.filter(w=>!g.usedW.includes(w)).length>=3?all.filter(w=>!g.usedW.includes(w)):all,x=>x).slice(0,3);
   setReady(g,"choose",15000);
  },
  choose(g,w){
-  g.word=w; g.usedW.push(w); g.answerLabel=cap(w);
-  const letters=[...g.answerLabel].map((c,i)=>c===" "?-1:i).filter(i=>i>=0);
+  g.word=w; g.usedW.push(w); markUsed("drawit",w); g.answerLabel=cap(w);
+  const letters=[...g.answerLabel].map((c,i)=>/[a-z0-9]/i.test(c)?i:-1).filter(i=>i>=0);
   g.revealOrder=shuffle(letters);
   g.hintMax={easy:Math.ceil(letters.length*0.5),medium:Math.ceil(letters.length*0.25),hard:-1}[g.cfg.diff];
   setStep(g,"play",g.cfg.time*1000); g.hint=hintText(g,0); SFX.start(); renderHost(true); broadcast();
@@ -1384,7 +1464,7 @@ EXT.drawit={
   if(matches(guess,[g.word])){
     const total=g.deadline-g.start, left=Math.max(0,g.deadline-Date.now()); const first=!Object.keys(g.res).length;
     const pts=addScore(id,Math.round(200+700*left/total)+(first?100:0)); addScore(g.drawer,150);
-    g.res[id]={pts}; SFX.ding(); g.feed.push({c:"ok",t:`${p.emoji} ${p.name} got it!${first?" ⚡ FIRST":""}`});
+    g.res[id]={pts,first}; SFX.ding(); g.feed.push({c:"ok",t:`${p.emoji} ${p.name} got it!${first?" ⚡ FIRST":""}`});
   } else {
     const close=isClose(guess,[g.word]); g.feed.push({c:close?"close":"",t:`${p.emoji} ${guess}${close?"  (so close!)":""}`});
     if(close) send({k:"nudge",id,msg:`"${guess}" is so close!`,c:"close",rid:g.rid});
@@ -1393,7 +1473,7 @@ EXT.drawit={
   if(activeIds().filter(x=>x!==g.drawer).every(x=>g.res[x])) this.reveal(g);
  },
  tick(g,now){
-  if(g.step==="play"){ const h=hintText(g,(now-g.start)/(g.deadline-g.start)); if(h!==g.hint){ g.hint=h; const el=$("#hint"); if(el) el.innerHTML=hintHtml(g); SFX.pop(); broadcast(); } }
+  if(g.step==="play"){ const h=hintText(g,hintCount(g,now)); if(h!==g.hint){ g.hint=h; const el=$("#hint"); if(el) el.innerHTML=hintHtml(g); SFX.pop(); broadcast(); } }
  },
  timeout(g){ if(g.step==="choose") this.choose(g,g.opts[0]); else if(g.step==="play"){ g.step="play"; this.reveal(g); } },
  msg(g,m){ if(m.k==="draw"&&m.id===g.drawer&&m.rid===g.rid&&g.step==="play"){ applyOps(g.strokes,m.ops); drawInto("dc",g.strokes); } },
@@ -1409,8 +1489,10 @@ EXT.drawit={
   if(g.step==="choose") return `${gbar(g,null,null,artist)}<div class="art" style="flex-direction:column;gap:14px;background:#ffffff10;box-shadow:none"><div class="big-emoji">🎨</div><h2 class="big-q">${pname(g.drawer)} is picking a word...</h2></div>`;
   const art=`<div class="art"><canvas id="dc" width="1000" height="1000"></canvas></div>`;
   if(g.step==="play") return `${gbar(g,"Reveal","EXT.drawit.reveal(S.game)",artist)}<div class="hint" id="hint">${hintHtml(g)}</div>${art}`;
-  const n=Object.keys(g.res).length;
-  return `${gbar(g,g.idx<g.total?"Next artist ▶":"Finish 🏁","nextRound()",artist)}<h2 style="font-size:40px">It was: <span style="color:var(--yellow)">${esc(g.answerLabel)}</span> <span class="muted" style="font-size:22px">${n?n+" got it":"Nobody got it 😅"}</span></h2>${art}`;
+  const n=Object.keys(g.res).length, marks={};
+  activeIds().forEach(id=>{ const r=g.res[id], t=g.tries[id]||0; marks[id]= id===g.drawer?{ok:null,note:`🎨 The artist · ${n} guessed it`}: r?{ok:true,note:r.first?"Got it first! ⚡":"Got it"}:{ok:false,note:t?`${t} wrong guess${t>1?"es":""}`:"No guess"}; });
+  const left=`${answerBanner(`🎨 ${esc(S.players[g.drawer]?.name||"")} drew`,esc(g.answerLabel))}<div class="art sm"><canvas id="dc" width="1000" height="1000"></canvas></div>`;
+  return `${gbar(g,g.idx<g.total?"Next artist ▶":"Finish 🏁","nextRound()",artist)}${revealLayout(left,boardHtml(g.rg,marks))}`;
  },
  after(g){ drawInto("dc",g.strokes); },
  phone(g,pv){
@@ -1431,112 +1513,18 @@ EXT.drawit={
  pupd(g){ const el=$("#ncount"); if(el&&myPriv().drawer&&g.nright) el.textContent=`🎉 ${g.nright} got it so far!`; }
 };
 
-/* ===================== TELEPHONE PICTIONARY ===================== */
-EXT.telephone={
- total:cfg=>cfg.rounds,
- readyText:"Write something funny! ✍️",
- kind:(g,k)=>k===0?"text0":(k%2===1?"draw":"guess"),
- round(g,now,ids){
-  g.order=shuffle(ids); g.steps=Math.min(g.order.length,8);
-  g.chains=g.order.map(id=>({owner:id,entries:[]})); g.k=0; g.sub={}; g.show=null; g.collecting=false;
-  setReady(g,"work",45000);
- },
- enter(g){ if(g.step==="work"){ g.sub={}; this.sendTasks(g); } },
- taskFor(g,id){
-  const n=g.order.length, i=g.order.indexOf(id); if(i<0) return null;
-  const c=((i-g.k)%n+n)%n, kind=this.kind(g,g.k), prev=g.chains[c].entries[g.k-1];
-  const t={kk:g.k,kind,c}; if(kind==="draw") t.text=prev?prev.v:""; if(kind==="guess") t.strokes=prev?prev.v:[]; return t;
- },
- sendTasks(g){ const rid=g.rid, k=g.k; g.order.forEach((id,i)=>setTimeout(()=>{ if(S.game===g&&g.rid===rid&&g.k===k&&g.step==="work") send({k:"task",id,rid,t:this.taskFor(g,id)}); },i*80)); },
- msg(g,m){ if(m.k==="needtask"&&g.step==="work"&&g.order.includes(m.id)) send({k:"task",id:m.id,rid:g.rid,t:this.taskFor(g,m.id)}); },
- answer(g,id,v){
-  if(g.step!=="work"||!v||v.kk!==g.k||g.sub[id]!==undefined||!g.order.includes(id)) return;
-  if(this.kind(g,g.k)==="draw"){ g.sub[id]=cleanStrokes(v.strokes); if(g.sub[id].length) addScore(id,100); }
-  else { const t=String(v.text||"").trim().slice(0,80); g.sub[id]=t||"🤷 (blank)"; if(t) addScore(id,100); }
-  SFX.tick();
-  const act=activeIds(); if(g.order.filter(x=>act.includes(x)).every(x=>g.sub[x]!==undefined)) this.advance(g);
- },
- advance(g){
-  if(g.step!=="work") return; const kind=this.kind(g,g.k), n=g.order.length;
-  g.order.forEach((id,i)=>{ const c=((i-g.k)%n+n)%n; let v=g.sub[id]; if(v===undefined) v=kind==="draw"?[]:"🤷 (ran out of time)"; g.chains[c].entries.push({kind:kind==="draw"?"draw":"text",by:id,v}); });
-  g.k++; g.collecting=false; g.sub={};
-  if(g.k>=g.steps){ g.step="show"; g.deadline=null; g.show={c:0,i:0,done:false}; SFX.reveal(); }
-  else { const nk=this.kind(g,g.k); setStep(g,"work",(nk==="draw"?g.cfg.time:40)*1000); this.sendTasks(g); SFX.start(); }
-  renderHost(true); broadcast();
- },
- timeout(g){ if(g.step!=="work") return; if(!g.collecting){ g.collecting=true; send({k:"collect",rid:g.rid,kk:g.k}); g.deadline=Date.now()+2500; } else this.advance(g); },
- forceEnd(g){ if(g.step==="work") g.deadline=Date.now()-1; },
- next(g){
-  const s=g.show, ch=g.chains[s.c];
-  if(!s.done){ if(s.i<ch.entries.length-1){ s.i++; SFX.pop(); } else { s.done=true; this.scoreChain(g,ch,s); } }
-  else if(s.c<g.chains.length-1){ g.show={c:s.c+1,i:0,done:false}; SFX.start(); }
-  else { nextRound(); return; }
-  renderHost(true); broadcast();
- },
- scoreChain(g,ch,s){
-  const first=ch.entries[0].v; let fin=null;
-  for(let j=ch.entries.length-1;j>0;j--){ if(ch.entries[j].kind==="text"){ fin=ch.entries[j].v; break; } }
-  s.final=fin; s.match=fin!=null&&(matches(fin,[first])||matches(first,[fin]));
-  if(s.match){ new Set(ch.entries.map(e=>e.by)).forEach(id=>addScore(id,300)); SFX.fanfare(); confetti(2000); } else SFX.buzz();
- },
- pub(g,o,ids){ o.k=g.k; o.steps=g.steps; ids.forEach(id=>{ o.priv[id]={done:g.step==="work"&&g.sub[id]!==undefined,inGame:g.order.includes(id)}; }); },
- done:(g,id)=>g.step==="work"&&g.sub[id]!==undefined,
- count(g){ const act=activeIds(); return `${Object.keys(g.sub).length} / ${g.order.filter(x=>act.includes(x)).length} done`; },
- host(g){
-  if(g.step==="work"){
-   const t={text0:["✍️","Write a phrase on your phone","Something fun for the next person to draw"],draw:["🎨","Draw what you got!","Everyone got a different phrase"],guess:["🤔","Guess the drawing","Describe what you see in a few words"]}[this.kind(g,g.k)];
-   return `${gbar(g,"Skip ahead ⏭","EXT.telephone.forceEnd(S.game)",`<span class="pill">Step ${g.k+1} / ${g.steps}</span>`)}<div class="big-emoji">${t[0]}</div><h2 class="big-q">${t[1]}</h2><div class="muted" style="font-size:22px">${t[2]}</div><div class="pill" id="count">${this.count(g)}</div>`;
-  }
-  const s=g.show, ch=g.chains[s.c];
-  const head=`<div class="pill" style="font-size:17px">📞 Chain ${s.c+1} of ${g.chains.length}, started by ${pname(ch.owner)}</div>`;
-  if(!s.done){
-   const e=ch.entries[s.i]; const lbl=s.i<ch.entries.length-1?"Next ▶":"Final result 🥁";
-   const by=e.kind==="draw"?"🎨 drawn by":(s.i===0?"✍️ written by":"🤔 guessed by");
-   return `${gbar(g,lbl,"EXT.telephone.next(S.game)")}${head}<div class="muted" style="font-size:22px">${by} ${pname(e.by)}</div>${e.kind==="draw"?`<canvas id="tcur" class="tcanvas" width="800" height="800"></canvas>`:`<div class="tcard">“${esc(e.v)}”</div>`}<div class="muted">${s.i+1} / ${ch.entries.length}</div>`;
-  }
-  const last=s.c>=g.chains.length-1; const lbl=!last?"Next chain ▶":(g.idx<g.total?"Next game ▶":"Finish 🏁");
-  return `${gbar(g,lbl,"EXT.telephone.next(S.game)")}${head}
-   <div class="row wrap" style="justify-content:center;gap:22px"><div><div class="muted">Started as</div><div class="tcard sm">“${esc(ch.entries[0].v)}”</div></div><div style="font-size:40px">➡️</div><div><div class="muted">Ended as</div><div class="tcard sm">${s.final!=null?`“${esc(s.final)}”`:"🎨 a drawing"}</div></div></div>
-   <div class="pill" style="background:${s.match?"var(--green)":"var(--orange)"};color:#1a1033;font-size:18px">${s.match?"🎉 It survived the chain! +300 each":"😂 Lost in translation"}</div>
-   <div class="chaingrid">${ch.entries.map((e,j)=>`<div class="cell">${e.kind==="draw"?`<canvas id="tg${j}" width="300" height="300"></canvas>`:`<div class="ctext">“${esc(e.v)}”</div>`}<div class="cby">${pname(e.by)}</div></div>`).join("")}</div>`;
- },
- after(g){
-  if(g.step!=="show") return; const s=g.show, ch=g.chains[s.c];
-  if(!s.done){ const e=ch.entries[s.i]; if(e.kind==="draw") drawInto("tcur",e.v); }
-  else ch.entries.forEach((e,j)=>{ if(e.kind==="draw") drawInto("tg"+j,e.v); });
- },
- pkey:()=>TASK?`${TASK.rid}${TASK.kk}${TASK.sent}`:"",
- phone(g,pv){
-  if(!pv.inGame) return `<div class="status">You joined mid-game. You'll be in the next one!</div>`;
-  if(g.step==="show") return `<div class="center"><div class="big-emoji">📺</div><h2>Watch the big screen!</h2><div class="muted" style="margin-top:8px">See how the chains turned out 😂</div></div>`;
-  if(pv.done) return `<div class="status ok">✅ Sent! Waiting for the others...</div>`;
-  if(!TASK||TASK.rid!==g.rid||TASK.kk!==g.k){ send({k:"needtask",id:P.id}); return `<div class="status">Loading your task...</div>`; }
-  if(TASK.sent) return `<div class="status ok">✅ Sent! Waiting for the others...</div>`;
-  if(TASK.kind==="text0") return `<h2 class="center">Write something for someone to draw</h2><div class="muted center">Short and funny works best</div><input id="tin" maxlength="60" placeholder="e.g. A cow stuck in traffic" autocomplete="off"><div class="row"><button class="ghost" onclick="$('#tin').value=pick(PHRASES)">🎲 Idea</button><button class="pink" style="flex:1" onclick="telSend()">Send</button></div>`;
-  if(TASK.kind==="draw"){ ensurePad(g.rid+":"+g.k,false); return `<div class="dword">Draw: <b>${esc(TASK.text||"")}</b></div>${padHtml()}<button class="pink" onclick="telSend()">Done ✓</button>`; }
-  return `<h2 class="center">What is this? 🤔</h2><div class="padwrap"><canvas id="view" width="800" height="800"></canvas></div><input id="tin" maxlength="60" placeholder="Describe the drawing" autocomplete="off"><button class="pink" onclick="telSend()">Send</button>`;
- },
- pafter(g){ if(!TASK||TASK.sent||g.step!=="work") return; if(TASK.kind==="draw") bindPad(); if(TASK.kind==="guess") drawInto("view",TASK.strokes); }
-};
-function telSend(auto){
-  if(!TASK||TASK.sent||!ST||!ST.g) return; const v={kk:TASK.kk};
-  if(TASK.kind==="draw"){ v.strokes=(PAD&&PAD.key===ST.g.rid+":"+TASK.kk)?PAD.strokes:[]; }
-  else { v.text=(($("#tin")||{}).value||"").trim(); if(!auto&&!v.text){ const i=$("#tin"); if(i){ i.classList.add("shake"); setTimeout(()=>i.classList.remove("shake"),400); } return; } }
-  TASK.sent=true; send({k:"ans",id:P.id,rid:TASK.rid,v}); pView=""; renderPlayer();
-}
-
 /* ===================== WHO SAID THAT ===================== */
 EXT.whosaid={
- pool:()=>shuffle(WHO_Q),
+ pool:()=>fresh("whosaid",WHO_Q,x=>x),
  total:cfg=>cfg.rounds,
  readyText:"Answer honestly. Nobody will know... maybe 😏",
- round(g,now,ids){ g.item=g.pool[(g.idx-1)%g.pool.length]; g.answers={}; g.list=null; g.ai=0; g.votes={}; setReady(g,"write",g.cfg.time*1000); },
+ round(g,now,ids){ g.item=g.pool[(g.idx-1)%g.pool.length]; markUsed("whosaid",g.item); g.answers={}; g.list=null; g.ai=0; g.votes={}; setReady(g,"write",g.cfg.time*1000); },
  answer(g,id,v){
   if(g.step==="write"){ const t=String(v||"").trim().slice(0,90); if(!t||g.answers[id]) return; g.answers[id]=t; SFX.tick(); if(activeIds().every(p=>g.answers[p])) this.startVote(g); }
   else if(g.step==="vote"){ if(v===id||!g.answers[v]) return; g.votes[id]=v; SFX.tick(); if(activeIds().every(p=>g.votes[p])) this.reveal(g); }
  },
  startVote(g){ if(g.step!=="write") return; const ent=Object.entries(g.answers); if(!ent.length){ toast("Nobody answered!"); nextRound(); return; } g.list=shuffle(ent.map(([id,t])=>({id,t}))).slice(0,8); g.ai=0; this.openVote(g); },
- openVote(g){ g.votes={}; setStep(g,"vote",25000); SFX.start(); renderHost(true); broadcast(); },
+ openVote(g){ g.votes={}; g.rg={}; setStep(g,"vote",25000); SFX.start(); renderHost(true); broadcast(); },
  reveal(g){ if(g.step!=="vote") return; g.step="vreveal"; g.deadline=null; const cur=g.list[g.ai]; let fooled=0;
   Object.entries(g.votes).forEach(([v,t])=>{ if(v===cur.id) return; if(t===cur.id) addScore(v,300); else fooled++; });
   if(fooled) addScore(cur.id,150*fooled); cur.fooled=fooled; SFX.reveal(); renderHost(true); broadcast(); },
@@ -1557,9 +1545,10 @@ EXT.whosaid={
   if(g.step==="write") return `${gbar(g,"Start voting","EXT.whosaid.startVote(S.game)")}<div class="big-emoji">🫣</div>${q}<div class="muted" style="font-size:22px">Answer on your phone. It's anonymous... for now 😏</div><div class="pill" id="count">${this.count(g)}</div>`;
   const cur=g.list[g.ai], card=`<div class="tcard">“${esc(cur.t)}”</div>`, pill=`<span class="pill">Answer ${g.ai+1} / ${g.list.length}</span>`;
   if(g.step==="vote") return `${gbar(g,"Reveal","EXT.whosaid.reveal(S.game)",pill)}${q}${card}<h2 style="font-size:34px">Who wrote this? 🤔</h2><div class="pill" id="count">${this.count(g)}</div>`;
-  const votes=Object.entries(g.votes).filter(([v])=>v!==cur.id);
-  const lbl=g.ai<g.list.length-1?"Next answer ▶":(g.idx<g.total?"Next question ▶":"Finish 🏁");
-  return `${gbar(g,lbl,"EXT.whosaid.next(S.game)",pill)}${q}${card}<h2 style="font-size:40px">Written by ${pname(cur.id)}!</h2><div class="pill" style="background:${cur.fooled?"var(--orange)":"var(--green)"};color:#1a1033;font-size:17px">${cur.fooled?`Fooled ${cur.fooled} 😈`:"Nobody was fooled!"}</div><div class="res-list">${votes.map(([v,t])=>`<div class="board-row"><span class="emo">${t===cur.id?"✅":"❌"}</span>${pname(v)}<span class="muted" style="margin-left:8px">guessed ${pname(t)}</span></div>`).join("")}</div>`;
+  const lbl=g.ai<g.list.length-1?"Next answer ▶":(g.idx<g.total?"Next question ▶":"Finish 🏁"), marks={};
+  activeIds().forEach(id=>{ const v=g.votes[id]; marks[id]= id===cur.id?{ok:null,note:`✍️ Wrote this · fooled ${cur.fooled||0}`}: v===cur.id?{ok:true,note:"Guessed right"}:{ok:false,note:v?"Guessed "+(S.players[v]?.name||""):"No vote"}; });
+  const left=`${q}${card}${answerBanner("✍️ Written by",pname(cur.id))}<div class="pill" style="background:${cur.fooled?"var(--orange)":"var(--green)"};color:#1a1033;font-size:17px">${cur.fooled?`Fooled ${cur.fooled} 😈`:"Nobody was fooled!"}</div>`;
+  return `${gbar(g,lbl,"EXT.whosaid.next(S.game)",pill)}${revealLayout(left,boardHtml(g.rg,marks))}`;
  },
  phone(g,pv){
   if(g.step==="write"){ if(pv.wrote) return `<div class="status ok">🤫 Sent anonymously! Waiting for the others...</div>`;
@@ -1602,7 +1591,10 @@ EXT.ttl={
   const cards=g.ord.map((i,j)=>{ const voters=Object.entries(g.votes).filter(([,x])=>x===i).map(([v])=>pname(v)); const rv=g.step==="reveal", isLie=rv&&i===s.lie;
    return `<div class="opt ${rv&&!isLie?"truth":""}" style="${isLie?"border-color:var(--red);background:#ff547033":""}">${isLie?`<span class="tag" style="background:var(--red);color:#fff">LIE</span>`:rv?`<span class="tag">TRUE</span>`:""}<span class="muted">${L[j]}.</span> ${esc(s.s[i])}${rv?`<div class="who">${voters.length?"Picked by: "+voters.join(", "):"No votes"}</div>`:""}</div>`; }).join("");
   if(g.step==="vote") return `${gbar(g,"Reveal","EXT.ttl.reveal(S.game)")}<h2 class="big-q">🔦 ${pname(g.spot)} is in the spotlight</h2><div class="muted" style="font-size:22px">Which one is the LIE? Vote on your phone.</div><div class="opts">${cards}</div><div class="pill" id="count">${this.count(g)}</div>`;
-  return `${gbar(g,g.idx<g.total?"Next person ▶":"Finish 🏁","nextRound()")}<h2 class="big-q">${pname(g.spot)} ${g.fooled?`fooled ${g.fooled} 😈`:"couldn't fool anyone 😅"}</h2><div class="opts">${cards}</div>`;
+  const marks={};
+  activeIds().forEach(id=>{ const v=g.votes[id]; marks[id]= id===g.spot?{ok:null,note:`🔦 In the spotlight · fooled ${g.fooled||0}`}: v===s.lie?{ok:true,note:"Spotted the lie"}:{ok:false,note:v!=null?"Picked a truth":"No vote"}; });
+  const left=`${answerBanner(`🤥 ${esc(S.players[g.spot]?.name||"")}'s lie was`,esc(s.s[s.lie]),"red")}<h2 style="font-size:30px">${pname(g.spot)} ${g.fooled?`fooled ${g.fooled} 😈`:"couldn't fool anyone 😅"}</h2><div class="opts sm" style="grid-template-columns:1fr">${cards}</div>`;
+  return `${gbar(g,g.idx<g.total?"Next person ▶":"Finish 🏁","nextRound()")}${revealLayout(left,boardHtml(g.rg,marks))}`;
  },
  phone(g,pv){
   if(g.step==="write"){ if(pv.wrote) return `<div class="status ok">🔒 Locked in! Waiting for the others...</div>`;
@@ -1675,7 +1667,10 @@ EXT.reaction={
   const pid=g.pen[g.pi], morePen=g.pen.length&&g.pi<g.pen.length-1;
   const lbl=morePen?"Next penalty ▶":(g.idx<g.total?"Next round ▶":"Finish 🏁");
   const pen=pid?`<div class="pencard"><span class="pill" style="background:#ffffff33">🚨 PENALTY ${g.pen.length>1?`${g.pi+1}/${g.pen.length}`:""}</span><h2 style="font-size:34px;margin-top:10px">${pname(pid)}, answer this:</h2><div class="penq">${esc(g.penQ)}</div><button class="ghost small" onclick="EXT.reaction.newQ(S.game)">🎲 Different question</button></div>`:"";
-  return `${gbar(g,lbl,"EXT.reaction.next(S.game)")}${pen}<div class="res-list">${rows}${er}${!rows&&!er?'<div class="muted">Nobody tapped 😴</div>':""}</div>`;
+  const marks={}; activeIds().forEach(id=>{ const r=g.res[id]||{}; marks[id]= r.early?{ok:false,note:"🚨 Tapped too early!"}: r.ms!=null?{ok:r.pts?true:null,note:`${r.ms} ms`}:{ok:false,note:"No tap"}; });
+  const fast=g.rank[0], best=fast?answerBanner("⚡ Fastest finger",`${pname(fast.id)} <span style="font-size:.5em">${fast.ms} ms</span>`,"yellow"):"";
+  const left=`${pen||best}${pen&&best?best:""}<div class="res-list">${rows}${er}${!rows&&!er?'<div class="muted">Nobody tapped 😴</div>':""}</div>`;
+  return `${gbar(g,lbl,"EXT.reaction.next(S.game)")}${revealLayout(left,boardHtml(g.rg,marks))}`;
  },
  phone(g,pv){
   if(g.step==="result"){
@@ -1703,31 +1698,6 @@ function rPaint(){
   b.className="rbtn "+cls; b.style.background=cls==="flash"?(RX.fc||"#ffd23f"):""; b.innerHTML=txt;
 }
 
-/* ===================== WISH WALL ===================== */
-function wishCard(w){ return `<div class="wish" style="background:${w.col};transform:rotate(${w.rot}deg)">${esc(w.t)}<div class="from">${esc(w.emoji)} ${esc(w.name)}</div></div>`; }
-EXT.wishes={
- total:()=>1,
- round(g,now){ g.wishes=[]; g.si=0; g.step="collect"; g.start=now; g.deadline=null; },
- answer(g,id,v){
-  const t=String(v||"").trim().slice(0,220); if(!t) return; const p=S.players[id];
-  const w={id,t,name:p.name,emoji:p.emoji,rot:(Math.random()*6-3).toFixed(1),col:pick(WCOLS)}; g.wishes.push(w); SFX.ding();
-  if(g.step==="collect"){ const wall=$("#wall"); if(wall){ const e0=wall.querySelector(".empty"); if(e0) e0.remove(); wall.insertAdjacentHTML("beforeend",wishCard(w)); } const c=$("#wcount"); if(c) c.textContent=g.wishes.length+" wishes"; }
- },
- startShow(g){ if(!g.wishes.length){ toast("No wishes yet! Ask everyone to send one."); return; } g.step="show"; g.si=0; g.nextAt=Date.now()+8000; SFX.fanfare(); confetti(3000); renderHost(true); broadcast(); },
- tick(g,now){ if(g.step==="show"&&now>=g.nextAt){ g.si=(g.si+1)%g.wishes.length; g.nextAt=now+8000; SFX.pop(); if(g.si===0) confetti(2000); renderHost(true); } },
- pub(g,o,ids){ ids.forEach(id=>{ o.priv[id]={n:g.wishes.filter(w=>w.id===id).length}; }); },
- done:(g,id)=>g.wishes.some(w=>w.id===id),
- count:g=>g.wishes.length+" wishes",
- host(g){
-  if(g.step==="collect") return `${gbar(g,"Start slideshow ▶","EXT.wishes.startShow(S.game)")}<h2 class="big-q">💌 Birthday Wish Wall</h2><div class="muted" style="font-size:20px">Type your wishes on your phone. Send as many as you like!</div><div class="pill" id="wcount">${g.wishes.length} wishes</div><div class="wall" id="wall">${g.wishes.map(wishCard).join("")||'<div class="muted empty">Wishes will pop up here...</div>'}</div>`;
-  const w=g.wishes[g.si];
-  return `${gbar(g,"Finish 🎉","endGame()")}<div class="wishbig" style="background:${w.col};transform:rotate(${(w.rot/2).toFixed(1)}deg)"><div>${esc(w.t)}</div><div class="from">With love, ${esc(w.emoji)} ${esc(w.name)}</div></div><div class="muted">${g.si+1} / ${g.wishes.length}</div>`;
- },
- phone(g,pv){ return `<h2 class="center">💌 Send a birthday wish</h2><textarea id="wish" rows="4" maxlength="220" placeholder="Write something sweet (or roast them a little 😜)"></textarea><button class="pink" onclick="wishSend()">Send wish 💌</button>${pv.n?`<div class="status ok">You've sent ${pv.n} wish${pv.n>1?"es":""} 💖 Send more!</div>`:""}`; }
-};
-function wishSend(){ const t=$("#wish"); if(!t||!t.value.trim()){ if(t){ t.classList.add("shake"); setTimeout(()=>t.classList.remove("shake"),400); } return; } sendAns(t.value.trim()); t.value=""; }
-
-
 /* ===================== RULES ===================== */
 const RULES={
  sketch:{how:["The AI draws something on the big screen, line by line.","Type your guess on your phone as fast as you can. Wrong guesses are free, so keep trying!","Type mode: letter hints like _ _ E _ appear over time. Pick mode: 4 options, only one try.","Hard mode draws the lines in random order and gives no hints."],score:["Faster correct guess = more points (up to 1,000)","+100 bonus for the first person to get it"]},
@@ -1752,6 +1722,257 @@ function rulesHtml(t,phone){
   </div>`;
 }
 
+
+/* ===================== ROUND RESULTS & LEADERBOARD ===================== */
+let stageBoard=false;
+function boardHtml(gains,marks,title,colLbl){
+  stageBoard=true; gains=gains||{}; marks=marks||{};
+  const ps=playersArr().sort((a,b)=>(b.score||0)-(a.score||0));
+  let rank=0, prev=null;
+  const rows=ps.map((p,i)=>{
+    const sc=p.score||0; if(sc!==prev){ rank=i+1; prev=sc; }
+    const m=marks[p.id], gp=gains[p.id]||0, medal=["🥇","🥈","🥉"][rank-1]||("#"+rank);
+    const note=m?`<small class="${m.ok===true?"ok":m.ok===false?"no":""}">${m.ok===true?"✅ ":m.ok===false?"❌ ":""}${esc(m.note||"")}</small>`:"";
+    return `<div class="lb-row ${gp>0?"up":""}"><span class="lb-rank">${medal}</span><span class="emo">${esc(p.emoji)}</span><span class="lb-name">${esc(p.name)}${note}</span><span class="lb-gain">${gp>0?"+"+fmtNum(gp):"–"}</span><span class="lb-tot">${fmtNum(sc)}</span></div>`;
+  }).join("");
+  return `<div class="card lb-card"><h3>${title||"🏆 Leaderboard"}</h3><div class="lb-row lb-head"><span></span><span></span><span></span><span>${colLbl||"This round"}</span><span>Total</span></div>${rows||'<div class="muted">No players yet</div>'}</div>`;
+}
+function revealLayout(left,board){ return `<div class="revealgrid"><div class="rv-left">${left}</div>${board}</div>`; }
+function answerBanner(label,html,cls){ return `<div class="ansbanner ${cls||""}"><div class="lbl">${label}</div><div class="txt">${html}</div></div>`; }
+function miniBoard(){
+  if(!ST||!ST.players||!ST.players.length) return "";
+  const ps=ST.players.slice().sort((a,b)=>b.score-a.score), me=ps.findIndex(p=>p.id===P.id);
+  return `<div class="card mini"><div class="muted" style="font-size:13px;font-weight:700;margin-bottom:6px">🏆 LEADERBOARD</div>${ps.slice(0,3).map((p,i)=>`<div class="board-row ${p.id===P.id?"me":""}"><span class="emo">${["🥇","🥈","🥉"][i]}</span>${esc(p.emoji)} ${esc(p.name)}<span class="sc">${fmtNum(p.score)}</span></div>`).join("")}${me>2?`<div class="board-row me"><span class="emo">#${me+1}</span>You<span class="sc">${fmtNum(ps[me].score)}</span></div>`:""}</div>`;
+}
+const PREVEAL={reveal:1,vreveal:1,result:1};
+function playerBody(){
+  const b=playerBody0(), g=ST&&ST.g;
+  if(g&&PREVEAL[g.step]&&!(GAMES[g.type]||{}).noScore) return b+miniBoard();
+  if(ST&&!ST.g&&ST.phase==="gameover") return b+miniBoard();
+  return b;
+}
+
+/* ===================== NO-REPEAT CONTENT ===================== */
+function fresh(type,items,keyFn){
+  if(!S) return shuffle(items);
+  S.used=S.used||{}; const used=S.used[type]||[], u=new Set(used);
+  const a=shuffle(items.filter(x=>!u.has(keyFn(x))));
+  const b=items.filter(x=>u.has(keyFn(x))).sort((x,y)=>used.indexOf(keyFn(x))-used.indexOf(keyFn(y)));
+  return a.concat(b);
+}
+function markUsed(type,key){
+  if(!S||key==null) return; S.used=S.used||{};
+  const l=(S.used[type]||[]).filter(k=>k!==key); l.push(key); if(l.length>800) l.splice(0,l.length-800); S.used[type]=l; persist();
+}
+function fmtOpt(t){ t=String(t||"").replace(/\s+/g," ").trim().replace(/[.!]+$/,""); if(!t) return t; t=t.toLowerCase(); return t.charAt(0).toUpperCase()+t.slice(1); }
+
+/* ===================== DOODLES & FOOD PHOTOS ===================== */
+function sketchItems(cfg){
+  const ok={easy:[1],medium:[1,2],hard:[2,3]}[cfg.diff]||[1,2];
+  const all=(window.DOODLES||[]).map(d=>({a:d.a,d:d.d,v:d.v,dz:true})).concat(DRAWINGS).filter(d=>ok.includes(d.d));
+  const by={}; all.forEach(x=>{ const k=x.a[0]; if(!by[k]||Math.random()<.5) by[k]=x; });
+  return Object.values(by);
+}
+function doodlePaths(v){
+  const strokes=v.map(s=>{ const pts=[]; for(let i=0;i+3<s.length;i+=4) pts.push([parseInt(s.substr(i,2),16),parseInt(s.substr(i+2,2),16)]); return pts; }).filter(p=>p.length);
+  let mx=1,my=1; strokes.forEach(p=>p.forEach(([x,y])=>{ if(x>mx)mx=x; if(y>my)my=y; }));
+  const sc=184/Math.max(mx,my), ox=(200-mx*sc)/2, oy=(200-my*sc)/2;
+  return strokes.map(p=>p.map(([x,y],i)=>(i?"L":"M")+(ox+x*sc).toFixed(1)+" "+(oy+y*sc).toFixed(1)).join(" ")+(p.length===1?" l0.1 0":""));
+}
+function foodBase(cfg){
+  const real=cfg.pics!=="emoji"&&window.FOOD_PHOTOS&&FOOD_PHOTOS.length;
+  return real?FOOD_PHOTOS.map(x=>({url:x.f,team:x.team,a:x.a})):FOODS;
+}
+function hintCount(g,now){
+  if(g.hintMax==null||g.hintMax<0) return 0;
+  if(g.type==="pixel"){ const left=g.deadline-now, win=Math.min(15000,(g.deadline-g.start)*0.6); if(left>win) return 0; return Math.min(g.hintMax,Math.floor((win-left)/win*g.hintMax)+1); }
+  const t=(now-g.start)/(g.deadline-g.start), st=g.cfg.diff==="easy"?0.2:0.45;
+  return t<st?0:Math.min(g.hintMax,Math.floor((t-st)/(0.9-st)*g.hintMax)+1);
+}
+
+/* ===================== TELEPHONE PICTIONARY ===================== */
+const STOPW=new Set("a an the of in on at to and with is are for by from his her their its my your this that".split(" "));
+function phraseMatch(guess,target){
+  const tw=norm(target).split(" ").filter(w=>w.length>2&&!STOPW.has(w)), gw=norm(guess).split(" ").filter(w=>w.length>1);
+  if(!tw.length||!gw.length) return matches(guess,[target]);
+  let hit=0;
+  tw.forEach(w=>{ const t2=tight(w); if(gw.some(x=>{ const x2=tight(x); return x2===t2||lev(x2,t2)<=tolFor(t2)||(t2.length>4&&x2.length>3&&(x2.includes(t2)||t2.includes(x2))); })) hit++; });
+  return hit/tw.length>=0.5;
+}
+EXT.telephone={
+ total:cfg=>cfg.rounds,
+ readyText:"Step 1: write something funny! ✍️",
+ kind:(g,k)=>k===0?"write":(k%2===1?"draw":"guess"),
+ secs(g,k){ const kd=this.kind(g,k); return (kd==="draw"?g.cfg.time:kd==="write"?45:40)*1000; },
+ round(g,now,ids){
+  g.order=shuffle(ids); const n=g.order.length; let st=g.cfg.long?5:3; if(st>n) st=n%2?n:n-1; g.steps=Math.max(3,st);
+  g.chains=g.order.map(id=>({owner:id,entries:[]})); g.k=0; g.sub={}; g.collecting=false; g.ci=0; g.links={};
+  setReady(g,"work",this.secs(g,0));
+ },
+ enter(g){ if(g.step==="work"){ g.sub={}; this.sendTasks(g); } },
+ taskFor(g,id){
+  const n=g.order.length, i=g.order.indexOf(id); if(i<0) return null;
+  const c=((i-g.k)%n+n)%n, kind=this.kind(g,g.k), prev=g.chains[c].entries[g.k-1];
+  const t={kk:g.k,kind,step:g.k+1,steps:g.steps}; if(kind==="draw") t.text=prev?prev.v:""; if(kind==="guess") t.strokes=prev?prev.v:[]; return t;
+ },
+ sendTasks(g){ const rid=g.rid, k=g.k; g.order.forEach((id,i)=>setTimeout(()=>{ if(S.game===g&&g.rid===rid&&g.k===k&&g.step==="work") send({k:"task",id,rid,t:this.taskFor(g,id)}); },i*80)); },
+ msg(g,m){ if(m.k==="needtask"&&g.step==="work"&&g.order.includes(m.id)) send({k:"task",id:m.id,rid:g.rid,t:this.taskFor(g,m.id)}); },
+ answer(g,id,v){
+  if(g.step!=="work"||!v||v.kk!==g.k||g.sub[id]!==undefined||!g.order.includes(id)) return;
+  if(this.kind(g,g.k)==="draw") g.sub[id]=cleanStrokes(v.strokes);
+  else { const t=String(v.text||"").trim().slice(0,80); g.sub[id]=t||"🤷 (blank)"; }
+  SFX.tick(); this.live(g);
+  const act=activeIds(); if(g.order.filter(x=>act.includes(x)).every(x=>g.sub[x]!==undefined)) this.advance(g);
+ },
+ advance(g){
+  if(g.step!=="work") return; const kind=this.kind(g,g.k), n=g.order.length;
+  g.order.forEach((id,i)=>{ const c=((i-g.k)%n+n)%n; let v=g.sub[id]; if(v===undefined) v=kind==="draw"?[]:(kind==="write"?pick(PHRASES):"🤷 (ran out of time)"); g.chains[c].entries.push({kind:kind==="draw"?"draw":"text",by:id,v}); });
+  g.k++; g.collecting=false; g.sub={};
+  if(g.k>=g.steps){ g.step="show"; g.deadline=null; g.ci=0; g.chains.forEach(ch=>this.scoreChain(g,ch)); SFX.reveal(); }
+  else { setStep(g,"work",this.secs(g,g.k)); this.sendTasks(g); SFX.start(); }
+  renderHost(true); broadcast();
+ },
+ scoreChain(g,ch){
+  const E=ch.entries; ch.links=[];
+  for(let j=1;j+1<E.length;j+=2){
+   const ok=Array.isArray(E[j].v)&&E[j].v.length>0&&phraseMatch(E[j+1].v,E[j-1].v); ch.links.push({j:j+1,ok});
+   if(ok) [E[j].by,E[j+1].by].forEach(id=>{ addScore(id,250); g.links[id]=(g.links[id]||0)+1; });
+  }
+  const last=E[E.length-1]; ch.survived=E.length>3&&last&&last.kind==="text"&&phraseMatch(last.v,E[0].v);
+  if(ch.survived) new Set(E.map(e=>e.by)).forEach(id=>addScore(id,200));
+ },
+ timeout(g){ if(g.step!=="work") return; if(!g.collecting){ g.collecting=true; send({k:"collect",rid:g.rid,kk:g.k}); g.deadline=Date.now()+2500; } else this.advance(g); },
+ forceEnd(g){ if(g.step==="work") g.deadline=Date.now()-1; },
+ next(g){
+  if(g.step==="show"){ if(g.ci<g.chains.length-1){ g.ci++; SFX.start(); } else { g.step="board"; SFX.fanfare(); confetti(2000); } renderHost(true); broadcast(); }
+  else if(g.step==="board") nextRound();
+ },
+ prev(g){ if(g.step==="show"&&g.ci>0){ g.ci--; renderHost(true); broadcast(); } },
+ live(g){ const el=$("#tchips"); if(el) el.innerHTML=this.chips(g); const c=$("#count"); if(c) c.textContent=this.count(g); },
+ chips(g){ const act=activeIds(); return (g.order||[]).filter(id=>act.includes(id)).map(id=>`<span class="chip ${g.sub[id]!==undefined?"ok":""}">${g.sub[id]!==undefined?"✅":"⏳"} ${pname(id)}</span>`).join(""); },
+ pub(g,o,ids){ o.k=g.k; o.steps=g.steps; o.ci=g.ci; o.nch=(g.chains||[]).length; ids.forEach(id=>{ o.priv[id]={done:g.step==="work"&&g.sub[id]!==undefined,inGame:(g.order||[]).includes(id)}; }); },
+ done:(g,id)=>g.step==="work"&&g.sub[id]!==undefined,
+ count(g){ const act=activeIds(); return `${Object.keys(g.sub).length} / ${(g.order||[]).filter(x=>act.includes(x)).length} done`; },
+ tracker(g){ return `<div class="steps">${Array.from({length:g.steps},(_,k)=>{ const kd=this.kind(g,k), ic={write:"✍️",draw:"🎨",guess:"🤔"}[kd], lb={write:"Write",draw:"Draw",guess:"Guess"}[kd]; return `<div class="stp ${k<g.k?"done":k===g.k?"now":""}"><span class="ic">${k<g.k?"✅":ic}</span>${k+1}. ${lb}</div>`; }).join('<span class="arr">➜</span>')}</div>`; },
+ host(g){
+  if(g.step==="work"){
+   const t={write:["✍️ Everyone: write a funny phrase on your phone","Keep it short. Someone else will have to DRAW it!"],draw:["🎨 Everyone: draw the phrase on your phone","Each of you got a DIFFERENT friend's phrase. No letters allowed!"],guess:["🤔 Everyone: guess the drawing on your phone","Each of you got someone else's drawing. Type what you think it shows."]}[this.kind(g,g.k)];
+   return `${gbar(g,"Skip ahead ⏭","EXT.telephone.forceEnd(S.game)")}${this.tracker(g)}<h2 class="big-q" style="font-size:44px">${t[0]}</h2><div class="muted" style="font-size:22px">${t[1]}</div><div class="pill" id="count">${this.count(g)}</div><div class="chips" id="tchips">${this.chips(g)}</div>`;
+  }
+  if(g.step==="board"){
+   const marks={}; activeIds().forEach(id=>{ const n=g.links[id]||0; marks[id]={ok:n?true:null,note:n?`Nailed ${n} link${n>1?"s":""}`:"No links nailed"}; });
+   const left=`<div class="big-emoji">📞</div><h2 class="big-q">That's every chain!</h2><div class="muted" style="font-size:22px;max-width:640px">+250 to the artist and the guesser every time a guess matched the phrase${g.steps>3?". +200 to everyone in a chain that survived start to finish":""}.</div>`;
+   return `${gbar(g,g.idx<g.total?"Next game ▶":"Finish 🏁","EXT.telephone.next(S.game)")}${revealLayout(left,boardHtml(g.rg,marks))}`;
+  }
+  const ch=g.chains[g.ci], E=ch.entries, big=E.length<=3, cs=big?"min(48vh,30vw)":"min(32vh,17vw)";
+  const items=E.map((e,j)=>{ const lk=(ch.links||[]).find(l=>l.j===j);
+   const by=e.kind==="draw"?"🎨 drew it":(j===0?"✍️ wrote":"🤔 guessed");
+   const body=e.kind==="draw"?`<canvas id="tc${j}" width="600" height="600" style="width:${cs};height:${cs}"></canvas>`:`<div class="tcard" style="${big?"font-size:min(3vw,34px);max-width:26vw":"font-size:20px;padding:12px 14px;max-width:15vw"}">“${esc(e.v)}”</div>`;
+   return `<div class="cbox"><div class="who">${pname(e.by)} ${by}</div>${body}${lk?`<div class="mark" style="color:${lk.ok?"var(--green)":"#ff8fa3"}">${lk.ok?"✅ Nailed it! +250 each":"❌ Lost in translation 😂"}</div>`:""}</div>`; }).join('<div class="carr">➜</div>');
+  const lbl=g.ci<g.chains.length-1?"Next chain ▶":"See leaderboard 🏆";
+  const back=g.ci>0?`<button class="ghost small" onclick="EXT.telephone.prev(S.game)">◀ Back</button>`:"";
+  return `${gbar(g,lbl,"EXT.telephone.next(S.game)",`<span class="pill">📞 Chain ${g.ci+1} of ${g.chains.length}</span>${back}`)}<h2 style="font-size:30px">Chain started by ${pname(ch.owner)}</h2><div class="chainrow">${items}</div>${ch.survived?`<div class="pill" style="background:var(--green);color:#0b2a17;font-size:18px">🎉 It survived the whole chain! +200 each</div>`:""}`;
+ },
+ after(g){ if(g.step!=="show") return; g.chains[g.ci].entries.forEach((e,j)=>{ if(e.kind==="draw") drawInto("tc"+j,e.v); }); },
+ pkey:g=>(TASK?`${TASK.rid}${TASK.kk}${TASK.sent}`:"")+"|"+g.k+"|"+g.ci,
+ phone(g,pv){
+  if(!pv.inGame) return `<div class="status">You joined mid-game. You'll be in the next one!</div>`;
+  if(g.step==="show") return `<div class="center"><div class="big-emoji">📺</div><h2>Watch the big screen!</h2><div class="muted" style="margin-top:8px">Chain ${g.ci+1} of ${g.nch} 😂</div></div>`;
+  if(g.step==="board") return `<div class="center"><div class="big-emoji">🏆</div><h2>All chains done!</h2><div class="muted" style="margin-top:8px">${rankLine()}</div></div>${miniBoard()}`;
+  const lbl=t=>`<div class="steplbl">STEP ${t.step} OF ${t.steps} · ${{write:"✍️ WRITE",draw:"🎨 DRAW",guess:"🤔 GUESS"}[t.kind]}</div>`;
+  if(pv.done||(TASK&&TASK.rid===g.rid&&TASK.kk===g.k&&TASK.sent)) return `<div class="status ok">✅ Sent! The next step starts when everyone is done.</div><div class="muted center">The big screen shows who's still going.</div>`;
+  if(!TASK||TASK.rid!==g.rid||TASK.kk!==g.k){ send({k:"needtask",id:P.id}); return `<div class="status">Loading your task...</div>`; }
+  if(TASK.kind==="write") return `${lbl(TASK)}<h2 class="center">Write a funny phrase</h2><div class="muted center">Someone else will have to draw it! Short works best.</div><input id="tin" maxlength="60" placeholder="e.g. A cow stuck in traffic" autocomplete="off"><div class="row"><button class="ghost" onclick="$('#tin').value=pick(PHRASES)">🎲 Idea</button><button class="pink" style="flex:1" onclick="telSend()">Send ✓</button></div>`;
+  if(TASK.kind==="draw"){ ensurePad(g.rid+":"+g.k,false); return `${lbl(TASK)}<div class="dword">Draw this: <b>${esc(TASK.text||"")}</b></div>${padHtml()}<div class="muted center">No letters or words! Tap Done when finished.</div><button class="pink" onclick="telSend()">Done ✓</button>`; }
+  return `${lbl(TASK)}<h2 class="center">What is this drawing? 🤔</h2><div class="padwrap"><canvas id="view" width="800" height="800"></canvas></div><input id="tin" maxlength="60" placeholder="Type what you think it shows" autocomplete="off"><button class="pink" onclick="telSend()">Send ✓</button>`;
+ },
+ pafter(g){ if(!TASK||TASK.sent||g.step!=="work") return; if(TASK.kind==="draw") bindPad(); if(TASK.kind==="guess") drawInto("view",TASK.strokes); }
+};
+function telSend(auto){
+  if(!TASK||TASK.sent||!ST||!ST.g) return; const v={kk:TASK.kk};
+  if(TASK.kind==="draw"){ v.strokes=(PAD&&PAD.key===ST.g.rid+":"+TASK.kk)?PAD.strokes:[]; }
+  else { v.text=(($("#tin")||{}).value||"").trim(); if(!auto&&!v.text){ const i=$("#tin"); if(i){ i.classList.add("shake"); setTimeout(()=>i.classList.remove("shake"),400); } return; } }
+  TASK.sent=true; send({k:"ans",id:P.id,rid:TASK.rid,v}); pView=""; renderPlayer();
+}
+
+/* ===================== WISH WALL ===================== */
+let BDAY=null, WISH_TXT="";
+const midiHz=m=>440*Math.pow(2,(m-69)/12);
+function startBdayMusic(){
+  stopBdayMusic(); if(MUTED) return; const ac=audio(); if(!ac) return;
+  const master=ac.createGain(); master.gain.setValueAtTime(0.0001,ac.currentTime); master.gain.exponentialRampToValueAtTime(0.13,ac.currentTime+2.5);
+  const lp=ac.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=2400; lp.connect(master); master.connect(ac.destination);
+  const dl=ac.createDelay(1); dl.delayTime.value=0.34; const fb=ac.createGain(); fb.gain.value=0.26; dl.connect(fb); fb.connect(dl); dl.connect(lp);
+  const me={master,on:true,timer:null}; BDAY=me;
+  const B=0.64;
+  /* "Good Morning to All" / Happy Birthday melody (1893, public domain), 3/4 time */
+  const MEL=[[67,.75],[67,.25],[69,1],[67,1],[72,1],[71,2],[67,.75],[67,.25],[69,1],[67,1],[74,1],[72,2],[67,.75],[67,.25],[79,1],[76,1],[72,1],[71,1],[69,1],[77,.75],[77,.25],[76,1],[72,1],[74,1],[72,3]];
+  const BASS=[[48,1],[43,4],[43,7],[48,10],[48,13],[41,16],[48,19],[43,22],[48,23]];
+  const play=(m,t,dur,vol,type)=>{ const o=ac.createOscillator(),o2=ac.createOscillator(),gn=ac.createGain(),g2=ac.createGain();
+    o.type=type||"sine"; o.frequency.value=midiHz(m); o2.type="sine"; o2.frequency.value=midiHz(m)*2; g2.gain.value=type?0.05:0.16;
+    gn.gain.setValueAtTime(0.0001,t); gn.gain.exponentialRampToValueAtTime(vol,t+0.02); gn.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    o.connect(gn); o2.connect(g2); g2.connect(gn); gn.connect(lp); gn.connect(dl); o.start(t); o2.start(t); o.stop(t+dur+.1); o2.stop(t+dur+.1); };
+  const loop=()=>{ if(BDAY!==me||!me.on||MUTED) return; const t0=ac.currentTime+0.15; let b=0;
+    MEL.forEach(([m,d])=>{ play(m,t0+b*B,Math.max(1.3,d*B*1.7),0.5); b+=d; });
+    BASS.forEach(([m,at])=>play(m,t0+at*B,2.4,0.32,"triangle"));
+    me.timer=setTimeout(loop,(25+3)*B*1000); };
+  loop();
+}
+function stopBdayMusic(){
+  if(!BDAY) return; const me=BDAY; BDAY=null; me.on=false; clearTimeout(me.timer);
+  try{ const ac=audio(), gn=me.master.gain; gn.cancelScheduledValues(ac.currentTime); gn.setValueAtTime(Math.max(0.0001,gn.value),ac.currentTime); gn.exponentialRampToValueAtTime(0.0001,ac.currentTime+1.2); }catch(e){}
+}
+EXT.wishes={
+ total:()=>1,
+ round(g,now){ g.wishes={}; g.list=[]; g.si=-1; g.step="collect"; g.start=now; g.deadline=null; g.music=true; g.paused=false; },
+ answer(g,id,v){
+  if(g.step!=="collect"||!v) return;
+  if(v.unlock){ delete g.wishes[id]; this.live(g); return; }
+  const t=String(v.t||"").trim().slice(0,240); if(!t) return; const p=S.players[id];
+  g.wishes[id]={id,t,name:p.name,emoji:p.emoji,col:pick(WCOLS),rot:(Math.random()*4-2).toFixed(1)}; SFX.ding(); this.live(g);
+ },
+ live(g){ const el=$("#wchips"); if(el) el.innerHTML=this.chips(g); const c=$("#count"); if(c) c.textContent=this.count(g); },
+ chips(g){ return playersArr().map(p=>`<span class="chip ${g.wishes[p.id]?"ok":""}">${g.wishes[p.id]?"🔒":"✍️"} ${esc(p.emoji)} ${esc(p.name)}</span>`).join(""); },
+ count(g){ return `${Object.keys(g.wishes).length} / ${activeIds().length} wishes locked in`; },
+ done:(g,id)=>!!g.wishes[id],
+ startShow(g){ const ws=Object.values(g.wishes); if(!ws.length){ toast("No wishes locked in yet!"); return; }
+  g.list=shuffle(ws); g.step="show"; g.si=-1; g.paused=false; g.nextAt=Date.now()+6500; if(g.music) startBdayMusic(); confetti(2500); renderHost(true); broadcast(); },
+ dur(g){ const w=g.list[g.si]; return w?Math.min(15000,6500+w.t.length*45):6500; },
+ go(g,d){ const n=g.list.length; g.si=Math.max(-1,Math.min(n,g.si+d)); g.nextAt=g.si>=n?Infinity:Date.now()+this.dur(g); if(g.si===n) confetti(6000); renderHost(true); broadcast(); },
+ togglePause(g){ g.paused=!g.paused; if(!g.paused&&g.si<g.list.length) g.nextAt=Date.now()+this.dur(g); renderHost(true); },
+ toggleMusic(g){ g.music=!g.music; if(g.music) startBdayMusic(); else stopBdayMusic(); renderHost(true); },
+ tick(g,now){ if(g.step==="show"&&!g.paused&&now>=g.nextAt) this.go(g,1); },
+ pub(g,o,ids){ o.si=g.si; o.n=g.list.length; ids.forEach(id=>{ o.priv[id]={locked:!!g.wishes[id]}; }); },
+ host(g){
+  if(g.step==="collect") return `${gbar(g,"Start slideshow 🎵","EXT.wishes.startShow(S.game)")}<div class="big-emoji">💌</div><h2 class="big-q">Write a birthday wish on your phone</h2><div class="muted" style="font-size:22px">Then tap <b>Lock in</b>. Nobody sees the wishes until the slideshow 🤫</div><div class="pill" id="count" style="font-size:18px">${this.count(g)}</div><div class="chips" id="wchips">${this.chips(g)}</div>`;
+  stageBoard=true;
+  const n=g.list.length;
+  const ctr=`<div class="toolbar wishctl"><button class="ghost small" onclick="EXT.wishes.go(S.game,-1)">◀ Prev</button><button class="ghost small" onclick="EXT.wishes.togglePause(S.game)">${g.paused?"▶ Play":"⏸ Pause"}</button><button class="ghost small" onclick="EXT.wishes.go(S.game,1)">Next ▶</button><button class="ghost small" onclick="EXT.wishes.toggleMusic(S.game)">${g.music?"🎵 Music on":"🔇 Music off"}</button><button class="small" onclick="endGame()">Finish 🎉</button></div>`;
+  let slide;
+  if(g.si<0) slide=`<div class="wishbig" style="background:#fff7d6;text-align:center"><div style="font-size:min(9vw,90px)">💌</div><div>Birthday wishes for</div><div style="color:#d6337a">${esc(S.title)}</div><div class="from">${n} wish${n>1?"es":""} from your favourite people</div></div>`;
+  else if(g.si>=n) slide=`<div class="wishbig" style="background:#ffe1ef;text-align:center"><div style="font-size:min(9vw,90px)">🎂🎉</div><div>Happy Birthday!</div><div class="from">With love, from all of us 💖</div></div>`;
+  else { const w=g.list[g.si]; slide=`<div class="wishbig" style="background:${w.col};transform:rotate(${w.rot}deg)"><div>${esc(w.t)}</div><div class="from">With love, ${esc(w.emoji)} ${esc(w.name)}</div></div>`; }
+  return `<div class="wishstage">${slide}<div class="muted">${g.si>=0&&g.si<n?`${g.si+1} / ${n}`:""}</div>${ctr}</div>`;
+ },
+ phone(g,pv){
+  if(g.step==="show") return `<div class="center"><div class="big-emoji">💖</div><h2>Look at the big screen!</h2><div class="muted" style="margin-top:8px">The wishes are playing now 🎶</div></div>`;
+  if(pv.locked) return `<div class="center"><div class="big-emoji">🔒</div><h2>Wish locked in!</h2></div>${WISH_TXT?`<div class="wish" style="background:#fff7d6;max-width:none">${esc(WISH_TXT)}</div>`:""}<div class="muted center">It stays secret until the slideshow.</div><button class="ghost" onclick="wishUnlock()">✏️ Edit my wish</button>`;
+  return `<h2 class="center">💌 Write a birthday wish</h2><div class="muted center">Sweet, funny, or a gentle roast 😜 It stays secret until the slideshow.</div><textarea id="wish" rows="5" maxlength="240" placeholder="Happy birthday! ..." oninput="WISH_TXT=this.value">${esc(WISH_TXT)}</textarea><button class="pink" onclick="wishSend()">🔒 Lock in my wish</button>`;
+ }
+};
+function wishSend(){ const t=$("#wish"); if(!t||!t.value.trim()){ if(t){ t.classList.add("shake"); setTimeout(()=>t.classList.remove("shake"),400); } return; } WISH_TXT=t.value.trim(); sendAns({t:WISH_TXT}); }
+function wishUnlock(){ sendAns({unlock:true}); }
+
+/* ===================== UPDATED TEXT ===================== */
+Object.assign(GAMES.sketch,{desc:"A mystery doodle draws itself. Guess it first!"});
+Object.assign(GAMES.pixel,{desc:"Pixelated food photos. Spot the dish!"});
+Object.assign(GAMES.telephone,{desc:"Write ➜ Draw ➜ Guess. Watch it go wrong 😂",toggles:[["long","Long chains","Write ➜ Draw ➜ Guess ➜ Draw ➜ Guess. Needs 5+ players."]]});
+Object.assign(GAMES.wishes,{desc:"Secret wishes, then a slideshow with music 🎶"});
+DEFAULTS.pixel.pics="real"; DEFAULTS.telephone.long=false;
+RULES.sketch.how=["A mystery doodle draws itself on the big screen, line by line.","Type your guess on your phone as fast as you can. Wrong guesses are free, so keep trying!","Type mode: letter hints like _ _ E _ appear over time. Pick mode: 4 options, only one try.","Hard mode draws the lines in a random order and gives no hints."];
+RULES.pixel.how=["A food photo starts super pixelated on the big screen and slowly gets clearer.","Team Bake 🎂 is cakes, desserts and sweets. Team Healthy 🥗 is healthy dishes.","Guess the dish on your phone. Wrong guesses are free.","Last 15 seconds: letter hints appear (Type mode), or a 50-50 lifeline removes 2 wrong options (Pick mode).","Hard mode starts zoomed in and in black and white."];
+RULES.telephone={how:["Step 1 ✍️ Everyone writes a funny phrase on their phone.","Step 2 🎨 Everyone gets a DIFFERENT friend's phrase and draws it.","Step 3 🤔 Everyone gets someone else's drawing and guesses what it is.","Everyone plays at the same time. Your phone always tells you exactly what to do.","Then each chain is shown on the big screen: phrase ➜ drawing ➜ guess 😂"],score:["Guess matches the phrase: +250 to the artist AND the guesser","Long chains: +200 to everyone if the phrase survives start to finish"]};
+RULES.wishes={how:["Everyone writes a birthday wish on their phone and taps Lock in.","Wishes stay secret. The big screen only shows who has locked in.","When everyone's ready, the host starts the slideshow with soft Happy Birthday music 🎶","Each wish appears one by one with the writer's name."],score:["No points here, just love 💖"]};
 
 /* ======================= BOOT ========================== */
 /* ======================================================= */
